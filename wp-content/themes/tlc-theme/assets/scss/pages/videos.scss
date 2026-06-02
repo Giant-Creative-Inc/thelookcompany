@@ -1,0 +1,198 @@
+@import '../variables';
+@import '../mixin';
+body[data-bg-header=true].archive .container-wrap.video-category-archive {
+  padding-top: 0px !important;
+  .video-gallery {
+    &__hero {
+      h1 {
+        color: $primary-color;
+      }
+    }
+  }
+}
+.video-gallery {
+  &__hero {
+    &.header-transparent {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-direction: column;
+      > .row_col_wrap_12 {
+        margin-top: 54px !important;
+        @include sm_desktop {
+          margin-top: 67px !important;
+        }
+        @include lg_desktop {
+          margin-top: 80px !important;
+        }
+      }
+    }
+    > .row-bg-wrap {
+      .inner-wrap {
+        .row-bg:after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgb(12 13 14 / 50%) 0%, rgba(12, 13, 14, .5) 100%),
+                      linear-gradient(0deg, rgb(12 13 14 / 90%) .18%, rgba(12, 13, 14, 0) 85%);
+          @include desktop {
+            background: linear-gradient(180deg, rgb(12 13 14 / 90%) 0%, rgba(12, 13, 14, 0) 50%),
+                        linear-gradient(90deg, rgb(12 13 14 / 90%) .18%, rgba(12, 13, 14, 0) 85%);
+          }
+        }
+      }
+    }
+    .vc_column-inner .vc_column-inner {
+        @include lg_desktop {
+          border-left: 2px solid $primary-color;
+          padding-left: 27px;
+        }
+
+    }
+    h1 {
+      @include mobile {
+        margin-bottom: -12px !important;
+      }
+      @include tablet {
+        margin-bottom: -18px !important;
+      }
+      @include sm_desktop {
+        padding-top: 8px;
+        line-height: 53px;
+      }
+      @include lg_desktop {
+        padding-top: 10px;
+        line-height: 65px;
+      }
+    }
+    .hero-text {
+      font-size: 16px;
+      line-height: 1.59;
+      @include tablet {
+        font-size: 18px;
+      }
+      @include desktop {
+        font-size: 24px;
+      }
+    }
+  }
+  &__gallery {
+    .svl__filters {
+      &:before {
+        content: '';
+        position: absolute;
+        top:0;
+        bottom:0;
+        width: 100vw;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #0C0D0E;
+        z-index: -1;
+      }
+      position: relative;
+      background: #0C0D0E;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      .svl__filters-label {
+        color: #FFF;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .svl__select {
+        border-radius: 6px;
+        border: 1px solid #424242;
+        background: #292929;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        color: #FFF;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24.091px; /* 150% */
+        max-width: 120px;
+      }
+      .svl__clear {
+        margin-left: 0;
+        color: #fff;
+      }
+      .svl__status {
+        position: absolute;
+        top: 105%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        display: block;
+        &[aria-busy="false"] {
+          display: none;
+        }
+        .svl__loader {
+          background: #292929;
+        }
+      }
+    }
+    .svl__results {
+      @include mobile {
+        padding-top: 40px !important;
+      }
+      @include tablet {
+        padding-top: 50px !important;
+      }
+      @include sm_desktop {
+        padding-top: 100px !important;
+      }
+      @include lg_desktop {
+        padding-top: 120px !important;
+      }
+      display: flex;
+      flex-direction: column;
+      @include mobile {
+        gap: 40px;
+      }
+      @include tablet {
+        gap: 50px;
+      }
+      @include desktop {
+        gap: 96px;
+      }
+      .svl__section {
+        padding-bottom: 0;
+        .svl__section-header {
+          padding-bottom: 8px;
+          margin-bottom: 24px;
+          border-bottom: 1px solid $secondary-color;
+          h2 {
+            font-weight: 700;
+            font-size: 24px !important;
+            font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          }
+          .svl__viewall {
+            font-weight: 700;
+          }
+        }
+        .nectar-video-box {
+          margin-bottom: 0;
+        }
+        .svl__grid {
+          .svl__card {
+            position: relative;
+            .nectar_video_lightbox{
+              box-shadow: none;
+            }
+            .nectar_video_lightbox:before,
+            .play {
+              opacity: 0;
+            }
+            h3.svl__name {
+              font-weight: 700;
+              font-size: 18px !important;
+              font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
+              line-height: normal;
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,250 @@
+/* ==========================================================================
+   Salient Case Study Library — Stylesheet
+   ========================================================================== */
+
+.scsl {
+	width: 100%;
+}
+
+/* Screen-reader only utility */
+.scsl__sr-only {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+}
+
+/* ==========================================================================
+   Filters (button row)
+   ========================================================================== */
+
+.scsl__filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	padding: 12px 0 20px;
+}
+
+.scsl__filter-btn {
+	padding: 0;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 1;
+}
+
+.scsl__filter-btn:hover {
+	opacity: 1;
+}
+
+.scsl__filter-btn--active {
+	opacity: 1;
+}
+
+/* Invert text on filled button via a nested span trick isn't needed here —
+   rely on the theme's button styles or override below if needed. */
+
+/* ==========================================================================
+   Status / loader
+   ========================================================================== */
+
+.scsl__status {
+	min-height: 28px;
+	display: flex;
+	align-items: center;
+	padding-bottom: 12px;
+}
+
+.scsl__loader {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 14px;
+	opacity: 0.8;
+}
+
+.scsl__spinner {
+	flex-shrink: 0;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	border: 2px solid rgba(0, 0, 0, 0.15);
+	border-top-color: currentColor;
+	animation: scslSpin 0.8s linear infinite;
+}
+
+@keyframes scslSpin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* ==========================================================================
+   Grid
+   ========================================================================== */
+
+.scsl__grid {
+  display: grid;
+  gap: 14px;
+  padding: 14px;
+
+  /* 4 equal columns on desktop */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  /* Each row is a fixed "unit". Items span rows to create heights */
+  grid-auto-rows: 40vh;       /* adjust if you want bigger/smaller tiles */
+  grid-auto-flow: dense;       /* backfills gaps */
+}
+
+/* =========================
+   Mosaic sizing (Desktop)
+   1x1, 1x2, 2x1, 2x2
+   ========================= */
+
+.scsl__tile--Regular  { grid-column: span 1; grid-row: span 1; }
+.scsl__tile--Tall     { grid-column: span 1; grid-row: span 2; }
+.scsl__tile--Wide     { grid-column: span 2; grid-row: span 1; }
+.scsl__tile--WideTall { grid-column: span 2; grid-row: span 2; }
+
+/* =========================
+   Tablet (2 columns)
+   ========================= */
+
+@media (max-width: 1024px) {
+  .scsl__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 120px;
+  }
+
+  .scsl__tile--Regular  { grid-column: span 1; grid-row: span 1; }
+  .scsl__tile--Tall     { grid-column: span 1; grid-row: span 2; }
+  .scsl__tile--Wide     { grid-column: span 2; grid-row: span 1; }
+  .scsl__tile--WideTall { grid-column: span 2; grid-row: span 2; }
+}
+
+/* =========================
+   Mobile (1 column)
+   ========================= */
+
+@media (max-width: 640px) {
+  .scsl__grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 140px;
+  }
+
+  /* In 1-col layout, everything spans full width */
+  .scsl__tile--Regular  { grid-column: span 1; grid-row: span 1; }
+  .scsl__tile--Tall     { grid-column: span 1; grid-row: span 2; }
+  .scsl__tile--Wide     { grid-column: span 1; grid-row: span 1; }
+  .scsl__tile--WideTall { grid-column: span 1; grid-row: span 2; }
+}
+
+/* ==========================================================================
+   Card
+   ========================================================================== */
+
+.scsl__card {
+	display: flex;
+	flex-direction: column;
+}
+
+.scsl__card-img-link {
+	display: block;
+}
+
+.scsl__img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none;
+  object-fit: cover;
+  display: block;
+}
+
+
+.scsl__img-fallback {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.06);
+}
+
+.scsl__card-body {
+	padding: 14px 0 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	flex: 1;
+}
+
+.scsl__name {
+	font-size: 18px;
+	line-height: 1.3;
+	margin: 0;
+}
+
+.scsl__name a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.scsl__desc {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.6;
+	opacity: 0.85;
+}
+
+.scsl__empty {
+	padding: 24px 0;
+	font-size: 14px;
+	opacity: 0.8;
+}
+
+
+
+/* =========================
+   Filters
+   ========================= */
+
+.scsl__filters {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 14px 0;
+}
+
+.scsl__filters-label {
+  font-weight: 600;
+}
+
+.scsl__select {
+  min-width: 220px;
+  height: 44px;
+}
+
+.scsl__clear {
+  height: 44px;
+  padding: 0 14px;
+  border: 0;
+  cursor: pointer;
+}
+
+.scsl__status {
+  min-height: 1.2em;
+  margin: 6px 0 10px;
+}
+
+.scsl__sr-only {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}

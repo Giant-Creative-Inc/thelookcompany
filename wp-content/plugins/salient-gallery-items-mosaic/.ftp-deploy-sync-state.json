@@ -1,0 +1,35 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1774972730908,
+    "data": [
+        {
+            "type": "file",
+            "name": "README.md",
+            "size": 31,
+            "hash": "9afca574a420b2d7bde105e8bc05b6585b382ae8c03b2f0085d6b499f026b5bb"
+        },
+        {
+            "type": "folder",
+            "name": "assets"
+        },
+        {
+            "type": "file",
+            "name": "salient-gallery-items-mosaic.php",
+            "size": 20755,
+            "hash": "cfbd648cb1456d21ffe3ae6aab8fb45c1fe81c3dcbaed4bb3aa3a5a5c9e8d6ea"
+        },
+        {
+            "type": "file",
+            "name": "assets/gallery-mosaic.css",
+            "size": 9225,
+            "hash": "2507ab5316ec36618c5208ae7277a0d2468226851ddf16a7d97ba7d8d243737c"
+        },
+        {
+            "type": "file",
+            "name": "assets/gallery-mosaic.js",
+            "size": 16633,
+            "hash": "16f8bbfd86d522036bd19dee2b3b93650b4c36128829f2d24dd69cdf2cff6dc4"
+        }
+    ]
+}

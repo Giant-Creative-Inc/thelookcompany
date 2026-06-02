@@ -1,0 +1,338 @@
+/* ==========================================================================
+   Salient Video Library — Stylesheet
+   ========================================================================== */
+
+.svl {
+	width: 100%;
+	--svl-white: #ffffff;
+	--svl-gray:  #4b5563;
+	--svl-red:   #e31937;
+	--svl-black: #0d0d0e;
+}
+
+/* Screen-reader only utility */
+.svl__sr-only {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+}
+
+/* ==========================================================================
+   Filters
+   ========================================================================== */
+
+.svl__filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	align-items: center;
+	padding: 12px 0 18px;
+	position: relative;
+}
+
+.svl__filters-label {
+	font-weight: 600;
+	margin-right: 8px;
+}
+
+/* Native select — visually hidden but in DOM so jQuery .trigger("change") bubbles */
+.svl__select--hidden {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	overflow: hidden !important;
+	clip: rect(0 0 0 0) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+	opacity: 0 !important;
+	pointer-events: none !important;
+	top: 0;
+	left: 0;
+}
+
+/* ==========================================================================
+   Custom Select Dropdown
+   ========================================================================== */
+
+.svl__select-wrapper {
+	position: relative;
+	min-width: 180px;
+}
+
+body[data-button-style^="rounded"] button.svl__select-trigger {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	width: 100%;
+	height: 44px;
+	padding: 0 14px;
+	background: #292929;
+	border: 1px solid #424242;
+	color: var(--svl-white);
+	font-size: 14px;
+	font-family: inherit;
+	letter-spacing: 0.02em;
+	cursor: pointer;
+	text-align: left;
+	border-radius: 6px !important;
+	-webkit-border-radius: 6px !important;
+	white-space: nowrap;
+}
+
+.svl__select-trigger:hover       { background: #1a1a1a; }
+.svl__select-trigger:focus-visible { outline: 2px solid var(--svl-gray); outline-offset: 2px; }
+
+.svl__select-value {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.svl__select-trigger--active .svl__select-value {
+	color: var(--svl-red);
+	font-weight: 600;
+}
+
+.svl__select-arrow {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	transition: transform 0.15s ease;
+}
+
+.svl__select-trigger[aria-expanded="true"] .svl__select-arrow {
+	transform: rotate(180deg);
+}
+
+.svl__select-listbox {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	background: var(--svl-black);
+	border: 1px solid var(--svl-gray);
+	border-top: 0;
+	list-style: none;
+	margin: 0;
+	padding: 4px 0;
+	max-height: 260px;
+	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--svl-gray) var(--svl-black);
+}
+
+.svl__select-listbox[hidden] { display: none; }
+
+.svl__select-option {
+	padding: 10px 14px;
+	color: var(--svl-white);
+	cursor: pointer;
+	font-size: 14px;
+	font-family: inherit;
+	list-style: none;
+}
+
+.svl__select-option--focused       { background: rgba(75, 85, 99, 0.3); }
+.svl__select-option[aria-selected="true"] { color: var(--svl-red); font-weight: 600; }
+.svl__select-option[aria-selected="true"].svl__select-option--focused { color: var(--svl-red); }
+
+/* Filters bar loading pill */
+.svl__filters-loader {
+	position: absolute;
+	top: 105%;
+	left: 50%;
+	transform: translateX(-50%);
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 12px;
+	border-radius: 999px;
+	background: #292929;
+	backdrop-filter: blur(6px);
+	z-index: 99;
+	color: var(--svl-white);
+}
+
+.svl__filters-loader[hidden]      { display: none; }
+.svl__filters-loader-text          { font-size: 13px; opacity: 0.75; }
+
+.svl__clear {
+	height: 44px;
+	padding: 0 14px;
+	border: none;
+	background: transparent;
+	color: var(--svl-white);
+	font-size: 14px;
+	font-family: inherit;
+	letter-spacing: 0.02em;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.svl__clear:hover          { background: var(--svl-gray); color: var(--svl-black); }
+.svl__clear:focus-visible  { outline: 2px solid var(--svl-gray); outline-offset: 2px; }
+.svl__clear[hidden]        { opacity: 0; pointer-events: none; }
+
+.svl__status {
+	display: flex;
+	align-items: center;
+	min-height: 40px;
+}
+
+.svl__loader[hidden] { display: none; }
+.svl__loader {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 12px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.06);
+	backdrop-filter: blur(6px);
+}
+
+.svl__spinner {
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	border: 2px solid rgba(255, 255, 255, 0.25);
+	border-top-color: rgba(255, 255, 255, 0.9);
+	animation: svlSpin 0.8s linear infinite;
+}
+
+@keyframes svlSpin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.svl__section {
+	padding: 14px 0 24px;
+}
+
+.svl__section-header {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 10px;
+}
+
+.svl__section-title {
+	font-size: 20px;
+	line-height: 1.2;
+	margin: 0;
+}
+
+.svl__viewall {
+	font-size: 14px;
+	text-decoration: none;
+}
+
+/* ==========================================================================
+   Grid
+   ========================================================================== */
+
+.svl__grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 22px;
+}
+
+@media (max-width: 1024px) {
+	.svl__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 640px) {
+	.svl__grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ==========================================================================
+   Card
+   ========================================================================== */
+
+.svl__card {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.svl__thumb {
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+/* Thumbnail / play overlay */
+.svl__lightbox {
+	display: block;
+	position: relative;
+}
+
+.svl__img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.svl__play {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+}
+
+.svl__play::before {
+	content: "";
+	width: 64px;
+	height: 64px;
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.45);
+	backdrop-filter: blur(2px);
+}
+
+.svl__play::after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-left: 14px solid rgba(255, 255, 255, 0.95);
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	transform: translateX(2px);
+}
+
+.svl__name {
+	font-size: 16px;
+	margin: 0;
+}
+
+.svl__desc {
+	margin: 0;
+	font-size: 14px;
+	opacity: 0.9;
+}
+
+.svl__empty {
+	padding: 16px 0;
+	font-size: 14px;
+	opacity: 0.9;
+}

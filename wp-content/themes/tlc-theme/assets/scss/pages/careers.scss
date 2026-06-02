@@ -1,0 +1,111 @@
+@import '../variables';
+@import '../mixin';
+@import '../forms';
+
+[class*="careers__"] {
+  .kicker {
+    margin-bottom: 0;
+  }
+  .underlined-title {
+    h2 {
+      position: relative;
+      padding-bottom: 24px !important;
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100px;
+        height: 1px;
+        background-color: $primary-color !important;
+      }
+    }
+  }
+  .center {
+    .underlined-title h2 {
+      &:after {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+    }
+  }
+  @include desktop {
+    .force-desktop-text-align-center {
+      .underlined-title h2 {
+        &:after {
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+.careers {
+  &__hero {
+    &.header-tansparent {
+      > .row_col_wrap_12 {
+        margin-top: 54px !important;
+        @include sm_desktop {
+          margin-top: 67px !important;
+        }
+        @include lg_desktop {
+          margin-top: 80px !important;
+        }
+      }
+    }
+    > .row_col_wrap_12 {
+      @include mobile {
+        padding: 96px 0 !important;
+      }
+      @include tablet {
+        padding: 96px 0 !important;
+      }
+      @include sm_desktop {
+        padding: 100px 0 !important;
+      }
+      @include lg_desktop {
+        padding: 120px 0 !important;
+      }
+    }
+    h1 {
+      color: $primary-color;
+      @include mobile {
+        margin-bottom: -12px !important;
+      }
+      @include tablet {
+        margin-bottom: -18px !important;
+      }
+      @include sm_desktop {
+        padding-top: 8px;
+        line-height: 53px;
+      }
+      @include lg_desktop {
+        padding-top: 10px;
+        line-height: 65px;
+      }
+    }
+    .hero-text {
+      font-size: 16px;
+      line-height: 1.59;
+      max-width: 620px;
+      @include tablet {
+        font-size: 18px;
+      }
+      @include desktop {
+        font-size: 24px;
+      }
+    }
+  }
+  @include touch_screen {
+    &__head-office {
+      .row-bg-wrap {
+        .row-bg-overlay {
+          background: linear-gradient(180deg, rgba(22, 26, 30, 0) 60%, rgb(22, 26, 30) 100%) !important;
+        }
+      }
+    }
+  }
+}

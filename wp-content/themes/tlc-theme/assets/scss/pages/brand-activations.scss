@@ -1,0 +1,324 @@
+@import '../variables';
+@import '../mixin';
+
+[class*="brand-activations__"] {
+  .underlined-title {
+    h2 {
+      position: relative;
+      padding-bottom: 24px !important;
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100px;
+        height: 1px;
+        background-color: $primary-color !important;
+      }
+    }
+    &.teal {
+      h2 {
+        &:after {
+          background-color: $brand-teal !important;
+        }
+      }
+    }
+    &.yellow {
+      h2 {
+        &:after {
+          background-color: $brand-yellow !important;
+        }
+      }
+    }
+    &.blue {
+      h2 {
+        &:after {
+          background-color: $brand-blue !important;
+        }
+      }
+    }
+    &.navy {
+      h2 {
+        &:after {
+          background-color: $brand-navy !important;
+        }
+      }
+    }
+  }
+  .center {
+    .underlined-title h2 {
+      &:after {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+    }
+  }
+  @include desktop {
+    .force-desktop-text-align-center {
+      .underlined-title h2 {
+        &:after {
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+.brand-activations {
+  &__hero {
+    &.header-transparent {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-direction: column;
+      > .row_col_wrap_12 {
+        margin-top: 54px !important;
+        @include sm_desktop {
+          margin-top: 67px !important;
+        }
+        @include lg_desktop {
+          margin-top: 80px !important;
+        }
+      }
+    }
+    > .row-bg-wrap {
+      .inner-wrap {
+        .row-bg:after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgb(12 13 14 / 50%) 0%, rgba(12, 13, 14, .5) 100%),
+                      linear-gradient(0deg, rgb(12 13 14 / 90%) .18%, rgba(12, 13, 14, 0) 85%);
+          @include desktop {
+            background: linear-gradient(180deg, rgb(12 13 14 / 90%) 0%, rgba(12, 13, 14, 0) 50%),
+                        linear-gradient(90deg, rgb(12 13 14 / 90%) .18%, rgba(12, 13, 14, 0) 85%);
+          }
+        }
+      }
+    }
+    h1 {
+      @include mobile {
+        margin-bottom: -12px !important;
+      }
+      @include tablet {
+        margin-bottom: -18px !important;
+      }
+      @include sm_desktop {
+        padding-top: 8px;
+        line-height: 53px;
+      }
+      @include lg_desktop {
+        padding-top: 10px;
+        line-height: 65px;
+      }
+    }
+    .hero-text {
+      font-size: 16px;
+      line-height: 1.59;
+      @include tablet {
+        font-size: 18px;
+      }
+      @include sm_desktop {
+        font-size: 28px;
+      }
+      @include lg_desktop {
+        font-size: 30px;
+      }
+    }
+  }
+  &__page-menu {
+    .page-submenu {
+      li {
+        a {
+          font-size: 17px;
+          font-weight: 700;
+          padding: 10px 0;
+        }
+      }
+    }
+  }
+  &__indoor-solutions,
+  &__outdoor-solutions,
+  &__flagtrax {
+    > .row-bg-wrap {
+      .inner-wrap {
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0%;
+          bottom: 0;
+          max-width: 1312px;
+          background-color: $primary-color !important;
+          width: 100vw;
+          height: 7px;
+          z-index: 2;
+          @include desktop {
+            height: 15px;
+            width: 68vw;
+          }
+        }
+      }
+    }
+    &:nth-child(odd) {
+      > .row-bg-wrap {
+        .inner-wrap {
+          &:before {
+            right: 0;
+            left: auto;
+          }
+        }
+      }
+      @include desktop {
+        .dark-bg {
+          &:before {
+            right: auto;
+            left: 0;
+          }
+        }
+      }
+    }
+    .flex_gap_desktop_32px {
+      .vc_column-inner {
+        .wpb_wrapper {
+          row-gap: 8px;
+        }
+      }
+    }
+    .nectar-cta.has-icon  {
+      .link_wrap {
+        flex-direction: row-reverse;
+        gap: 12px;
+        i {
+          color: $brand-red;
+        }
+      }
+    }
+    &.teal {
+      > .row-bg-wrap {
+        .inner-wrap {
+          &:before {
+            background-color: $brand-teal !important;
+          }
+        }
+      }
+      .nectar-cta.has-icon  {
+        .link_wrap {
+          i {
+            color: $brand-teal;
+          }
+        }
+      }
+    }
+    &.yellow {
+      > .row-bg-wrap {
+        .inner-wrap {
+          &:before {
+            background-color: $brand-yellow !important;
+          }
+        }
+      }
+      .nectar-cta.has-icon  {
+        .link_wrap {
+          i {
+            color: $brand-yellow;
+          }
+        }
+      }
+    }
+    &.blue {
+      > .row-bg-wrap {
+        .inner-wrap {
+          &:before {
+            background-color: $brand-blue !important;
+          }
+        }
+      }
+      .nectar-cta.has-icon  {
+        .link_wrap {
+          i {
+            color: $brand-blue;
+          }
+        }
+      }
+    }
+    &.navy {
+      > .row-bg-wrap {
+        .inner-wrap {
+          &:before {
+            background-color: $brand-navy !important;
+          }
+        }
+      }
+      .nectar-cta.has-icon  {
+        .link_wrap {
+          i {
+            color: $brand-navy;
+          }
+        }
+      }
+    }
+    @include touch_screen {
+      > .row-bg-wrap {
+        .inner-wrap {
+          &:after {
+            content: '';
+            position: absolute;
+            left: 0%;
+            bottom: 0;
+            z-index: 1;
+            background: rgba(22, 26, 30, .85);
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+          }
+        }
+      }
+    }
+    @include desktop {
+      .dark-bg {
+        &:before {
+          content: "";
+          position: absolute;
+          width: 100vw;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          background: rgba(22, 26, 30, .85);
+          border-radius: 50px;
+        }
+      }
+    }
+  }
+  &__contact-us,
+  &__case-studies {
+    > .row-bg-wrap {
+      .inner-wrap {
+        .row-bg {
+          .row-bg-img {
+            object-fit: contain;
+          }
+        }
+      }
+    }
+    .vc_col-sm-12 {
+      .flickity-page-dots {
+        bottom: -50px !important;
+      }
+    }
+  }
+  &__case-studies {
+    @include desktop {
+      > .row-bg-wrap {
+        .inner-wrap {
+          .row-bg {
+            .row-bg-img {
+              max-width: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

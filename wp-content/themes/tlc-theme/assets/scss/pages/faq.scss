@@ -1,0 +1,128 @@
+@import '../variables';
+@import '../mixin';
+
+.faq {
+  &__hero {
+    &.header-tansparent {
+      > .row_col_wrap_12 {
+        margin-top: 54px !important;
+        @include sm_desktop {
+          margin-top: 67px !important;
+        }
+        @include lg_desktop {
+          margin-top: 80px !important;
+        }
+      }
+    }
+    > .row_col_wrap_12 {
+      @include mobile {
+        padding: 96px 0 !important;
+      }
+      @include tablet {
+        padding: 96px 0 !important;
+      }
+      @include sm_desktop {
+        padding: 100px 0 !important;
+      }
+      @include lg_desktop {
+        padding: 120px 0 !important;
+      }
+    }
+    h1 {
+      color: $primary-color;
+      @include mobile {
+        margin-bottom: -12px !important;
+      }
+      @include tablet {
+        margin-bottom: -18px !important;
+      }
+      @include sm_desktop {
+        padding-top: 8px;
+        line-height: 53px;
+      }
+      @include lg_desktop {
+        padding-top: 10px;
+        line-height: 65px;
+      }
+    }
+    .hero-text {
+      font-size: 16px;
+      line-height: 1.59;
+      max-width: 620px;
+      @include tablet {
+        font-size: 18px;
+      }
+      @include desktop {
+        font-size: 24px;
+      }
+    }
+  }
+  &__questions {
+    *{
+      transition-property: all;
+      transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+      transition-duration: .15s;
+    }
+    .sffe-faq-filter {
+      &__control{
+        label {
+          width: 100%;
+          color: #677476;
+          font-size: 13.424px;
+          font-weight: 700;
+          letter-spacing: 0.671px;
+        }
+        select {
+          max-width: 320px;
+          border-radius: 6.023px;
+          border: 1.004px solid var(--gray-300, #D1D5DB);
+          background: var(--white, #FFF);
+          box-shadow: 0 1.004px 2.008px 0 rgba(0, 0, 0, 0.05);
+        }
+      }
+      &__current {
+        h2 {
+          font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          color: #969AAC;
+          text-align: center;
+          font-size: 19px;
+          font-weight: 700;
+          letter-spacing: 0.971px;
+        }
+      }
+      &__results {
+        max-width: 1440px;
+        margin: 0 auto;
+        .sffe-accordion {
+          &__item {
+            button {
+              padding: 32px 16px;
+              &:focus {
+                outline: none;
+              }
+              h3 {
+                .sffe-accordion__qtext {
+                  font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                  color: #2D2D2D;
+                  font-size: 20px;
+                  font-weight: 500;
+                  letter-spacing: normal;
+                  margin-bottom: 0 !important;
+                }
+              }
+              .sffe-accordion__icon {
+                border-color: $primary-color;
+              }
+              &[aria-expanded="true"] {
+                color: $primary-color;
+              }
+            }
+          }
+          &__panel {
+            padding: 0 16px 32px;
+          }
+        }
+      }
+    }
+  }
+}

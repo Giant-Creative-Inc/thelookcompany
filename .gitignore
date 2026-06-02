@@ -1,0 +1,85 @@
+# Core - Do not track WordPress core files
+/wp-admin/
+/wp-includes/
+/index.php
+/license.txt
+/readme.html
+/wp-*.php
+/xmlrpc.php
+
+# Configuration
+wp-config.php
+
+# Content - Ignore default directories but allow custom items
+/wp-content/uploads/
+/wp-content/upgrade/
+/wp-content/cache/
+/wp-content/backups/
+/wp-content/index.php
+/wp-content/plugins/index.php
+/wp-content/themes/index.php
+
+# Third-party themes (not custom - managed separately)
+/wp-content/themes/twenty*/
+/wp-content/themes/salient/
+
+# Third-party plugins (managed separately, includes premium/licensed plugins)
+/wp-content/plugins/*
+
+# Plugins to track
+!/wp-content/plugins/gridpane-redis-object-cache/
+!/wp-content/plugins/gridpane-redis-object-cache/**
+
+!/wp-content/plugins/nginx-helper/
+!/wp-content/plugins/nginx-helper/**
+
+!/wp-content/plugins/wp-fail2ban/
+!/wp-content/plugins/wp-fail2ban/**
+
+!/wp-content/plugins/js_composer_salient/
+!/wp-content/plugins/js_composer_salient/**
+
+!/wp-content/plugins/salient-case-study-library/
+!/wp-content/plugins/salient-case-study-library/**
+
+!/wp-content/plugins/salient-category-filter/
+!/wp-content/plugins/salient-category-filter/**
+
+!/wp-content/plugins/salient-core/
+!/wp-content/plugins/salient-core/**
+
+!/wp-content/plugins/salient-custom-branding/
+!/wp-content/plugins/salient-custom-branding/**
+
+!/wp-content/plugins/salient-faq-filter-element/
+!/wp-content/plugins/salient-faq-filter-element/**
+
+!/wp-content/plugins/salient-gallery-items-mosaic/
+!/wp-content/plugins/salient-gallery-items-mosaic/**
+
+!/wp-content/plugins/salient-kenburns-carousel/
+!/wp-content/plugins/salient-kenburns-carousel/**
+
+!/wp-content/plugins/salient-video-library/
+!/wp-content/plugins/salient-video-library/**
+
+# Theme node_modules (build dependencies - not tracked in git)
+/wp-content/themes/tlc-theme/node_modules/
+
+# Sass cache
+.sass-cache/
+
+# Zip files (theme exports, not needed in version control)
+*.zip
+
+# All-in-One WP Migration backups (large binary files)
+/wp-content/ai1wm-backups/*.wpress
+
+# macOS system files
+.DS_Store
+**/.DS_Store
+
+# Logs and environment
+*.log
+.htaccess
+.env

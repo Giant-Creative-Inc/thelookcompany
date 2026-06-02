@@ -1,0 +1,111 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1774640887502,
+    "data": [
+        {
+            "type": "file",
+            "name": "README.md",
+            "size": 26,
+            "hash": "c1efe522794af116b47ac9337c5d59a021fb10309da510400ce14c5e35a85a58"
+        },
+        {
+            "type": "folder",
+            "name": "assets"
+        },
+        {
+            "type": "file",
+            "name": "composer.json",
+            "size": 120,
+            "hash": "a1c16f0c9c95f0896553590ab78fee70f52eda6bc9b53778dcf44810e65e1289"
+        },
+        {
+            "type": "file",
+            "name": "gulpfile.js",
+            "size": 1963,
+            "hash": "89df5c140b4d0933d1cc3a89413e7a9826bbca68216922da67c163de522b055c"
+        },
+        {
+            "type": "file",
+            "name": "package-lock.json",
+            "size": 718524,
+            "hash": "721e1d8b3f4947b3b30e6667bc6d2d106b74cd0a21495ecb901f0dd7b6920f82"
+        },
+        {
+            "type": "file",
+            "name": "package.json",
+            "size": 566,
+            "hash": "d54e888fab58114e7e0773efc2bf954d5958dc856f3583c491ee7562d8fab500"
+        },
+        {
+            "type": "file",
+            "name": "phpcs.xml.dist",
+            "size": 1959,
+            "hash": "9d7a1d68701db435bde3801143be2a851068f103b84a3b4352ba974cd6eb6452"
+        },
+        {
+            "type": "file",
+            "name": "ralph-run.sh",
+            "size": 18283,
+            "hash": "2a0c85d5e846d4d1744432448b52af68fed2da93a1b0edbde113886ccebc108f"
+        },
+        {
+            "type": "file",
+            "name": "run-phpcs-install.js",
+            "size": 984,
+            "hash": "0ee337c72ecc41282c977bb09e7d9e445303d2b6da79598005c6149ba28943fd"
+        },
+        {
+            "type": "file",
+            "name": "run-verify.js",
+            "size": 10776,
+            "hash": "15d163cda160dc671c9fa289efc63605b3229a79358cd0ed516ca100ccf5fd37"
+        },
+        {
+            "type": "file",
+            "name": "salient-category-filter.php",
+            "size": 22094,
+            "hash": "aee70cd48fe9685baa7fb91126eddedecc8e7db296c9eaaf395ab17e049672c4"
+        },
+        {
+            "type": "file",
+            "name": "assets/scf-filter.js",
+            "size": 3062,
+            "hash": "e6c0ecff28e757e8f450c5b866f7c36cf13d9570d632d426d6a71cedfa09167f"
+        },
+        {
+            "type": "file",
+            "name": "assets/scf-filter.js.map",
+            "size": 12419,
+            "hash": "1378cb4eabd96016ce84b91290a2abf7467043cf01bd375123d0f5a89969ac45"
+        },
+        {
+            "type": "file",
+            "name": "assets/scf-style.css.map",
+            "size": 2544,
+            "hash": "b34a07d9d07e31b0092fe135e3d0c5257c14efb8cdd7a8d63eb887ce177f6554"
+        },
+        {
+            "type": "file",
+            "name": "assets/scf-style.css",
+            "size": 771,
+            "hash": "b484806dae01c2405ba6ff8ed38200a209ee998604a6242a53d3f68699729848"
+        },
+        {
+            "type": "folder",
+            "name": "assets/src"
+        },
+        {
+            "type": "file",
+            "name": "assets/src/scf-filter.js",
+            "size": 7005,
+            "hash": "2debc80505a707f118aee5ae52c0d80d02f84d4fd32efd36f36af1b5b8869da9"
+        },
+        {
+            "type": "file",
+            "name": "assets/src/scf-style.scss",
+            "size": 1060,
+            "hash": "aef7ade2f85b50a13fe49e3bc4ca90c5c0ea0a4f20595756a9207f6de93ee891"
+        }
+    ]
+}

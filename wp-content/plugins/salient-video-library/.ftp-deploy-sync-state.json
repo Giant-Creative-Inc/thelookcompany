@@ -1,0 +1,35 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1774886232454,
+    "data": [
+        {
+            "type": "file",
+            "name": "README.md",
+            "size": 24,
+            "hash": "490eb8f089c10c696c34833f9e39cdecf4ff54b83513610e850dbacf91df6385"
+        },
+        {
+            "type": "folder",
+            "name": "assets"
+        },
+        {
+            "type": "file",
+            "name": "salient-video-library.php",
+            "size": 35178,
+            "hash": "21d17ad86c487d81ee8c7dba01b3daa7bb91c13cbde8d89c492595c522cff364"
+        },
+        {
+            "type": "file",
+            "name": "assets/video-library.css",
+            "size": 7032,
+            "hash": "7c11a51d91f91a64f78511de56f6c3c4821b34c22a0f4e444435a5f73a808b27"
+        },
+        {
+            "type": "file",
+            "name": "assets/video-library.js",
+            "size": 16463,
+            "hash": "e3e55d68362c6e7cc576f14225556e64baa4ee2fd9abdc4330aba17be3339304"
+        }
+    ]
+}

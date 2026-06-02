@@ -1,0 +1,35 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1774273219967,
+    "data": [
+        {
+            "type": "file",
+            "name": "README.md",
+            "size": 29,
+            "hash": "3f336cbfd06012326d97d39f19f01be2a43a2a7117b8d391b0d12bafd1943cf7"
+        },
+        {
+            "type": "folder",
+            "name": "assets"
+        },
+        {
+            "type": "file",
+            "name": "salient-case-study-library.php",
+            "size": 11794,
+            "hash": "cceff7a3fa41b96448562414d55c168f064f144b14925a3adea745fb4229c42c"
+        },
+        {
+            "type": "file",
+            "name": "assets/case-study-library.css",
+            "size": 5175,
+            "hash": "e0d8c6acf041cb7519bb8a16176f90a20fce6f07d1a556b6cf50e69cba80162d"
+        },
+        {
+            "type": "file",
+            "name": "assets/case-study-library.js",
+            "size": 2271,
+            "hash": "ac2251936f8bb058f2b8320716ed2de49ad9d05b11741d1ecf3ba337e172602e"
+        }
+    ]
+}

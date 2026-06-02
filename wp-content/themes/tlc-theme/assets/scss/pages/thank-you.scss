@@ -1,0 +1,96 @@
+@import '../variables';
+@import '../mixin';
+
+.thank-you {
+  &__hero {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+    .row-bg-wrap {
+      .inner-wrap {
+        .row-bg {
+          &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-image: url('/wp-content/uploads/2026/02/tlc-l-logo-bg-d.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 48px;
+            z-index: 2;
+            height: 71px;
+            @include sm_desktop {
+              width: 162px;
+              height: 220px;
+            }
+            @include lg_desktop {
+              width: 220px;
+              height: 300px;
+            }
+          }
+          &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 7px;
+            background-color: $primary-color !important;
+            @include desktop {
+              width: 68vw;
+              height: 15px;
+            }
+          }
+        }
+      }
+    }
+    > .row_col_wrap_12 {
+      margin-top: 54px !important;
+      @include mobile {
+        padding: 96px 0 !important;
+      }
+      @include tablet {
+        padding: 96px 0 !important;
+      }
+      @include sm_desktop {
+        padding: 100px 0 !important;
+        margin-top: 67px !important;
+      }
+      @include lg_desktop {
+        padding: 120px 0 !important;
+        margin-top: 80px !important;
+      }
+    }
+    h1 {
+      @include mobile {
+        margin-bottom: -12px !important;
+      }
+      @include tablet {
+        margin-bottom: -18px !important;
+      }
+      @include sm_desktop {
+        padding-top: 8px;
+        line-height: 53px;
+      }
+      @include lg_desktop {
+        padding-top: 10px;
+        line-height: 65px;
+      }
+    }
+    .hero-text {
+      font-size: 16px;
+      line-height: 1.59;
+      @include tablet {
+        font-size: 18px;
+      }
+      @include sm_desktop {
+        font-size: 28px;
+      }
+      @include lg_desktop {
+        font-size: 30px;
+      }
+    }
+  }
+}

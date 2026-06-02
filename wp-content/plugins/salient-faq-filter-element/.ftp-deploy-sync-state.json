@@ -1,0 +1,35 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1772053967190,
+    "data": [
+        {
+            "type": "file",
+            "name": "README.md",
+            "size": 29,
+            "hash": "119ec2873adb0d75361dc5226ad756b10e6df14a64bb28e7d8ffc4ef1fe36af4"
+        },
+        {
+            "type": "folder",
+            "name": "assets"
+        },
+        {
+            "type": "file",
+            "name": "salient-faq-filter-element.php",
+            "size": 16577,
+            "hash": "3f47c27f729885df7f976da21d11a01060ec91160be94a458d63d8b2ee129f5c"
+        },
+        {
+            "type": "file",
+            "name": "assets/faq-filter.css",
+            "size": 2125,
+            "hash": "a4776f28e4928a23fff75b2b63df4c36c2bced0cb26431009a0bc5c411d15965"
+        },
+        {
+            "type": "file",
+            "name": "assets/faq-filter.js",
+            "size": 5016,
+            "hash": "f1951434c1a2c9cebef6167549fd2c07a063dc8808d172955d76125046a6e52a"
+        }
+    ]
+}

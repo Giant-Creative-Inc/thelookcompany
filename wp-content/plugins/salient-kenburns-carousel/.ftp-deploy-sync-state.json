@@ -1,0 +1,43 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1771612434578,
+    "data": [
+        {
+            "type": "file",
+            "name": " salient-kenburns-carousel.php",
+            "size": 13747,
+            "hash": "68d159633c72873f06097d1c1de4314c706a0b80157d434b62108741bd7d812c"
+        },
+        {
+            "type": "folder",
+            "name": "assets"
+        },
+        {
+            "type": "file",
+            "name": "assets/.DS_Store",
+            "size": 8196,
+            "hash": "ee3add5fb33f15b0f50ea373014cf29b1ceb435b2b782056c70de63d08a4a58d"
+        },
+        {
+            "type": "folder",
+            "name": "assets/css"
+        },
+        {
+            "type": "folder",
+            "name": "assets/js"
+        },
+        {
+            "type": "file",
+            "name": "assets/css/kenburns-carousel.css",
+            "size": 3162,
+            "hash": "287742d1eb52732aec9940e743d1605e75b37440cc7a0073bdc56a4ab0f8364e"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/kenburns-carousel.js",
+            "size": 9802,
+            "hash": "8274c9556b5609b17cd1030de32a5fe2ee9bceb377f75e8c182bb9c65631a282"
+        }
+    ]
+}
