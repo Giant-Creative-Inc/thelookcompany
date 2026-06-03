@@ -83,3 +83,10 @@ wp-config.php
 *.log
 .htaccess
 .env
+
+# JetBrains IDEs (.idea)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/

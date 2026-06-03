@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "gulp styles"
+  },
   "dependencies": {
     "chokidar": "^3.5.3",
     "glob-parent": "^5.1.2",
