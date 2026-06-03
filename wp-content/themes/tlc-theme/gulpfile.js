@@ -42,6 +42,7 @@ const cssFabricAndFrames = build("./assets/scss/pages/fabric-and-frames.scss", "
 const cssDisplaySystems = build("./assets/scss/pages/display-systems.scss", "display-systems.min.css");
 const cssSignsAndBanners = build("./assets/scss/pages/signs-and-banners.scss", "signs-and-banners.min.css");
 const cssServices = build("./assets/scss/pages/services.scss", "services.min.css");
+const cssFranchise = build("./assets/scss/pages/franchise-solutions.scss", "franchise-solutions.min.css");
 
 // group task
 const styles = parallel(
@@ -66,7 +67,8 @@ const styles = parallel(
   cssFabricAndFrames,
   cssDisplaySystems,
   cssSignsAndBanners,
-  cssServices
+  cssServices,
+  cssFranchise
 );
 
 // watcher
