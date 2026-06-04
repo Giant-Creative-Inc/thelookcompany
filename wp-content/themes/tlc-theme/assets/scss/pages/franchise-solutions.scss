@@ -342,12 +342,31 @@ body .gform_wrapper .gfield[class*=gfield--type-handl], body[data-form-submit=re
     }
   }
 
-  &____contact-us {
+  &__contact-us {
     .desktop-sticky {
       @include desktop {
         position: sticky;
         top: 20px; /* Distance from the top of the viewport when it "sticks" */
         z-index: 10; /* Keeps the sidebar on top of other content layers */
+      }
+    }
+  }
+
+  &__tier-row {
+    &-best-for {
+      color: $tertiary-color;
+    }
+
+    .iwithtext {
+      font-size: 14px;
+
+      .iwt-icon {
+        width: 25px;
+        height: 25px;
+      }
+
+      .iwt-text {
+        padding-left: 40px;
       }
     }
   }
