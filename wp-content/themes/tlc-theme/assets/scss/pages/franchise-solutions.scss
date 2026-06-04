@@ -356,5 +356,18 @@ body .gform_wrapper .gfield[class*=gfield--type-handl], body[data-form-submit=re
     &-best-for {
       color: $tertiary-color;
     }
+
+    .iwithtext {
+      font-size: 14px;
+
+      .iwt-icon {
+        width: 25px;
+        height: 25px;
+      }
+
+      .iwt-text {
+        padding-left: 40px;
+      }
+    }
   }
 }
