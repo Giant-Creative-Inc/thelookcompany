@@ -1,5 +1,6 @@
 @import '../variables';
 @import '../mixin';
+@import '../forms';
 
 [class*="franchise-landing__"] {
   .underlined-title {
@@ -332,6 +333,16 @@
             }
           }
         }
+      }
+    }
+  }
+
+  &____contact-us {
+    .desktop-sticky {
+      @include desktop {
+        position: sticky;
+        top: 20px; /* Distance from the top of the viewport when it "sticks" */
+        z-index: 10; /* Keeps the sidebar on top of other content layers */
       }
     }
   }
