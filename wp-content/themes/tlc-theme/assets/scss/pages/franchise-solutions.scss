@@ -2,6 +2,11 @@
 @import '../mixin';
 @import '../forms';
 
+// Hidden field fix
+body .gform_wrapper .gfield[class*=gfield--type-handl], body[data-form-submit=regular] .gform_wrapper .gfield[class*=gfield--type-handl] {
+  display: none;
+}
+
 [class*="franchise-landing__"] {
   .underlined-title {
     h2 {
