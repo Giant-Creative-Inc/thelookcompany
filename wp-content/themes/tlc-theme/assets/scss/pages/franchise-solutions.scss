@@ -357,6 +357,18 @@ body .gform_wrapper .gfield[class*=gfield--type-handl], body[data-form-submit=re
       color: $tertiary-color;
     }
 
+    &-tier-title {
+      font-size: 20px !important;
+    }
+
+    .vc_column-inner .wpb_text_column {
+      font-size: 14px;
+    }
+
+    .vc_row .row_col_wrap_12 {
+      gap: 60px;
+    }
+
     .iwithtext {
       font-size: 14px;
 
