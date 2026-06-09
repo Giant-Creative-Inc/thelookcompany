@@ -9,7 +9,7 @@ function salient_child_enqueue_styles() {
   wp_register_script( 'tlc-form-js', get_stylesheet_directory_uri() . '/assets/js/forms.js', array( 'jquery' ), '', true );
 
   // Pages that need the forms JS enqueued.
-  $form_pages = array( 'contact', 'careers' );
+  $form_pages = array( 'contact', 'careers', 'franchise-solutions' );
 
   // Front page gets its own stylesheet (home.min.css).
   if ( is_front_page() ) {
