@@ -1,5 +1,6 @@
 
 /* GRAVITY FORMS */
+body[data-form-style="minimal"] .container-wrap,
 body .gform-theme--framework.gform-theme.gform_wrapper,
 body .gform_wrapper,
 body[data-form-submit=regular] .gform_wrapper,
@@ -28,6 +29,10 @@ body[data-form-submit=regular] .container-wrap .gform_wrapper.gform-theme--found
   .gfield {
     position: relative;
 
+    &[class*=gfield--type-handl] {
+      display: none;
+    }
+
     .gfield_label {
       margin-top: 0 !important;
       font-weight: 400 !important;
@@ -41,15 +46,16 @@ body[data-form-submit=regular] .container-wrap .gform_wrapper.gform-theme--found
       }
     }
 
-
     &:not(.gfield--type-fileupload) {
-      .gfield_label {
+      .gfield_label:not(legend) {
         position: absolute;
         top: 16px;
         left: 24px;
         font-size: 15px;
         pointer-events: none;
         transition: 0.2s ease;
+        color: #161a1e !important;
+        color: #161a1e !important;
         &.focused {
           top: 3px;
           font-size: 12px;
@@ -57,24 +63,65 @@ body[data-form-submit=regular] .container-wrap .gform_wrapper.gform-theme--found
           background: inherit;
         }
       }
+      legend.gfield_label {
+        padding-left: 14px;
+      }
     }
 
-    &.gfield--type-fileupload{
+    &.gfield--type-fileupload {
+      border-radius: 0 !important;
       .gfield_label {
         position: absolute;
-        left: 24px;
-        top: 3px;
-        font-size: 12px;
+        left: 0;
+        top: 0;
+        font-size: 15px;
         opacity: 1;
         background: inherit;
+      }
+      input {
+        padding-left: 0 !important;
+        padding-bottom: 0 !important;
+        border-radius: 0 !important;
+      }
+      .gfield_description {
+        margin-top: 0 !important;
+        line-height: 1.4;
+        font-size: 12px;
       }
     }
 
     .ginput_container {
+      .gform-grid-col select,
+      .gform-grid-col input,
+      &.ginput_container_textarea,
+      &.ginput_container_phone,
+      &.ginput_container_email,
+      &.ginput_container_text,
+      &.ginput_container_select {
+        border: 1px solid #7C7C7C !important;
+        block-size: auto !important;
+        border-radius: 100px !important;
+        background-color: $white !important;
+      }
+      &.ginput_container_textarea {
+        border-radius: 21px !important;
+      }
       input,
       select,
       textarea {
         padding-top: 22px !important;
+      }
+
+      &.ginput_container_address > .gform-grid-col {
+        margin-bottom: 22px;
+        position: relative;
+        label {
+          position: absolute;
+          top: 100%;
+          font-size: 14px;
+          line-height: 1.4;
+          padding: 0 0 0 14px;
+        }
       }
     }
     .gfield_description {
@@ -103,11 +150,12 @@ body[data-form-submit=regular] .container-wrap .gform_wrapper.gform-theme--found
   textarea {
     font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
     border-radius: 100px !important;
-    border: 1px solid #7C7C7C !important;
+    border: none !important;
     block-size: auto !important;
     padding: 22px 24px 10px !important;
     line-height: 1.2 !important;
     background-color: transparent !important;
+    color: #000;
     &:focus {
       box-shadow: none;
     }
@@ -120,12 +168,41 @@ body[data-form-submit=regular] .container-wrap .gform_wrapper.gform-theme--found
     background-size: 20px;
   }
   textarea {
-    border-radius: 21px !important;
+    border-radius: 0 !important;
   }
 
   ::placeholder {
     color: #E0E0E0 !important;
     opacity: 1;
+  }
+  .span_12.light .gfield .ginput_container .gform-grid-col input,
+  .span_12.light .gfield .ginput_container .gform-grid-col textarea,
+  .span_12.light .gfield .ginput_container .gform-grid-col select {
+    color: #161a1e !important;
+    padding: 15.5px 24px !important;
+  }
+  .span_12.light .gfield .ginput_container .gform-grid-col label {
+    text-shadow: 0 0 3px #000;
+  }
+  .span_12.light .gfield .ginput_container input[type=file],
+  .span_12.light .gfield .ginput_container input[type=color],
+  .span_12.light .gfield .ginput_container input[type=date],
+  .span_12.light .gfield .ginput_container input[type=datetime-local],
+  .span_12.light .gfield .ginput_container input[type=datetime],
+  .span_12.light .gfield .ginput_container input[type=email],
+  .span_12.light .gfield .ginput_container input[type=month],
+  .span_12.light .gfield .ginput_container input[type=number],
+  .span_12.light .gfield .ginput_container input[type=password],
+  .span_12.light .gfield .ginput_container input[type=search],
+  .span_12.light .gfield .ginput_container input[type=tel],
+  .span_12.light .gfield .ginput_container input[type=text],
+  .span_12.light .gfield .ginput_container input[type=time],
+  .span_12.light .gfield .ginput_container input[type=url],
+  .span_12.light .gfield .ginput_container input[type=week],
+  .span_12.light .gfield .ginput_container select,
+  .span_12.light .gfield .ginput_container textarea {
+    color: #161a1e !important;
+    padding: 15.5px 24px !important;
   }
 
   .gform_footer {
@@ -156,5 +233,4 @@ body[data-form-submit=regular] .container-wrap .gform_wrapper.gform-theme--found
       }
     }
   }
-
 }
