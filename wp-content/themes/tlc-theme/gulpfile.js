@@ -112,6 +112,7 @@ const cssEntries = [
   ['./assets/scss/pages/videos.scss', 'videos.min.css'],
   ['./assets/scss/pages/guides.scss', 'guides.min.css'],
   ['./assets/scss/pages/brand-activations.scss', 'brand-activations.min.css'],
+  ['./assets/scss/pages/interior-branding.scss', 'interior-branding.min.css'],
   ['./assets/scss/pages/the-look-group.scss', 'the-look-group.min.css'],
   ['./assets/scss/pages/careers.scss', 'careers.min.css'],
   ['./assets/scss/pages/lightboxes.scss', 'lightboxes.min.css'],
@@ -179,6 +180,7 @@ const CRITICAL_PAGES = [
   // "/thank-you",
   '/franchise-solutions',
   '/home-rebrand',
+  '/interior-branding',
 ];
 
 const CRITICAL_OPTIONS = {
