@@ -120,7 +120,7 @@ const cssEntries = [
   ['./assets/scss/pages/signs-and-banners.scss', 'signs-and-banners.min.css'],
   ['./assets/scss/pages/services.scss', 'services.min.css'],
   ['./assets/scss/pages/franchise-solutions.scss', 'franchise-solutions.min.css'],
-  ["./assets/scss/pages/landing-pages.scss", "landing-pages.min.css"],
+  ['./assets/scss/pages/home-rebrand.scss', 'home-rebrand.min.css'],
 ];
 
 const stylesBuild = parallel(...cssEntries.map(([file, out]) => buildCSS(file, out, false)));
@@ -169,7 +169,7 @@ function optimizeImages() {
 
 // Run manually after `gulp build`: gulp critical
 // Requires the local dev site to be running at SITE_URL.
-const SITE_URL = 'http://staging.thelookcompany.local/';
+const SITE_URL = 'https://thelookcompany.local/';
 
 // All pages to extract critical CSS from.
 // Critical CSS is merged and deduplicated into a single critical.min.css.
@@ -177,7 +177,8 @@ const CRITICAL_PAGES = [
   '/',
   // "/contact",
   // "/thank-you",
-  '/landing-page'
+  '/franchise-solutions',
+  '/home-rebrand',
 ];
 
 const CRITICAL_OPTIONS = {
