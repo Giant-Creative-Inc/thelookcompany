@@ -1,0 +1,299 @@
+/**
+ * Salient Globe Locations frontend styles.
+ */
+
+.sgl-sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.sgl-globe-locations {
+	position: relative;
+	width: 100%;
+	color: #fff;
+	padding-bottom: 40px;
+}
+
+/* Map */
+.sgl-map {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 2 / 1;
+	max-height: 70vh;
+	margin: 0 auto;
+}
+
+.sgl-map__figure {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.sgl-map__image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center top;
+}
+
+.sgl-map__pins {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+.sgl-pin {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	min-width: 44px;
+	min-height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+	pointer-events: auto;
+	line-height: 0;
+	z-index: 2;
+	transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.sgl-pin:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: 3px;
+}
+
+.sgl-pin__dot {
+	display: block;
+	width: 12px;
+	height: 12px;
+	aspect-ratio: 1/1;
+	background-color: var(--sgl-pin-color, #000);
+	box-shadow: var(--sgl-pin-shadow, 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.25) inset, 0 0 21px 1.5px var(--sgl-pin-glow-color, var(--sgl-pin-color, #E51937)));
+	transition: box-shadow 0.3s ease, background-color 0.3s ease;
+	border-radius: 3px;
+}
+
+.sgl-pin.is-selected .sgl-pin__dot {
+	background-color: var(--sgl-pin-selected-color, var(--sgl-pin-color, #000));
+	animation: sgl-pin-glow-pulse var(--sgl-pin-pulse-duration, 1.6s) ease-in-out infinite;
+}
+
+.sgl-globe-locations.is-interacting .sgl-pin:not(.is-active) .sgl-pin__dot {
+	background-color: var(--sgl-pin-unselected-color, #888);
+	box-shadow: var(--sgl-pin-unselected-shadow, 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.15) inset, 0 0 14px 1px var(--sgl-pin-unselected-glow-color, var(--sgl-pin-unselected-color, #888)));
+	animation: none;
+}
+
+.sgl-globe-locations.is-interacting .sgl-pin:not(.is-active) {
+	opacity: var(--sgl-pin-unselected-opacity, 0.45);
+}
+
+@keyframes sgl-pin-glow-pulse {
+	0%,
+	100% {
+		box-shadow: var(--sgl-pin-selected-shadow, 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.25) inset, 0 0 21px 1.5px var(--sgl-pin-glow-color, var(--sgl-pin-color, #E51937)));
+	}
+	50% {
+		box-shadow: var(--sgl-pin-selected-shadow-pulse, 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.45) inset, 0 0 42px 8px var(--sgl-pin-glow-color, var(--sgl-pin-color, #E51937)));
+	}
+}
+
+/* Cards slider */
+.sgl-cards {
+	position: relative;
+	margin-top: -60px;
+	padding: 0 24px;
+	z-index: 3;
+	overflow: hidden;
+}
+
+.sgl-cards__scroll {
+	overflow: hidden;
+}
+
+.sgl-cards__track {
+	display: flex;
+	width: max-content;
+	animation: sgl-cards-scroll 40s linear infinite;
+}
+
+.sgl-cards__group {
+	display: flex;
+	gap: 16px;
+	padding-right: 16px;
+}
+
+.sgl-cards:hover .sgl-cards__track,
+.sgl-cards:focus-within .sgl-cards__track,
+.sgl-globe-locations.has-selection .sgl-cards__track {
+	animation-play-state: paused;
+}
+
+@keyframes sgl-cards-scroll {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+.sgl-card {
+	width: 280px;
+	min-height: 120px;
+	padding: 0;
+	background-color: #1a1a1a;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.sgl-card__select {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 20px 24px;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+}
+
+.sgl-card__select:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: -2px;
+}
+
+.sgl-card__name {
+	display: block;
+	margin: 0 0 8px;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.3;
+	color: #fff;
+}
+
+.sgl-card__address {
+	display: block;
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.75);
+}
+
+.sgl-card__phone {
+	margin: 8px 0 0;
+	padding: 0;
+	font-size: 13px;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.75);
+}
+
+.sgl-card__phone a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.sgl-card__phone a:hover {
+	color: #fff;
+}
+
+.sgl-card__phone a:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+.sgl-card.is-active,
+.sgl-card.is-selected {
+	background-color: #252525;
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.sgl-globe-locations.is-interacting .sgl-card:not(.is-active):not(.is-selected) {
+	opacity: 0.55;
+}
+
+@media only screen and (min-width: 691px) {
+	.sgl-cards__scroll {
+		cursor: grab;
+		touch-action: pan-y;
+	}
+
+	.sgl-cards__scroll.is-dragging {
+		cursor: grabbing;
+		user-select: none;
+	}
+
+	.sgl-cards__track.is-manual {
+		animation: none;
+	}
+
+	.sgl-globe-locations.sgl-cards-full-width .sgl-cards {
+		width: 100vw;
+		max-width: 100vw;
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+/* Mobile: stacked cards, no slider */
+@media only screen and (max-width: 690px) {
+	.sgl-cards {
+		margin-top: 24px;
+		padding: 0 16px;
+	}
+
+	.sgl-cards__track {
+		flex-direction: column;
+		width: 100%;
+		animation: none;
+	}
+
+	.sgl-cards__group {
+		flex-direction: column;
+		gap: 12px;
+		padding-right: 0;
+		width: 100%;
+	}
+
+	.sgl-cards__group[aria-hidden="true"] {
+		display: none;
+	}
+
+	.sgl-card {
+		width: 100%;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sgl-pin.is-selected .sgl-pin__dot {
+		animation: none;
+		box-shadow: var(--sgl-pin-selected-shadow, 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.25) inset, 0 0 21px 1.5px var(--sgl-pin-glow-color, var(--sgl-pin-color, #E51937)));
+	}
+
+	.sgl-pin,
+	.sgl-pin__dot,
+	.sgl-card {
+		transition: none;
+	}
+
+	.sgl-cards__track {
+		animation-play-state: paused;
+	}
+}
