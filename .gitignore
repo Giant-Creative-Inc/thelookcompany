@@ -63,6 +63,12 @@ wp-config.php
 !/wp-content/plugins/salient-video-library/
 !/wp-content/plugins/salient-video-library/**
 
+!/wp-content/plugins/salient-marquee-slider/
+!/wp-content/plugins/salient-marquee-slider/**
+
+!/wp-content/plugins/salient-portfolio-slider/
+!/wp-content/plugins/salient-portfolio-slider/**
+
 # Theme node_modules (build dependencies - not tracked in git)
 /wp-content/themes/tlc-theme/node_modules/
 

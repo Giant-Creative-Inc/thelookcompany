@@ -1,0 +1,43 @@
+/**
+ * Accessibility focus styles for Portfolio Slider.
+ */
+
+.nectar_fullscreen_zoom_recent_projects .zoom-slider-controls button:focus-visible,
+.nectar_fullscreen_zoom_recent_projects .sps-carousel-pause:focus-visible,
+.nectar_fullscreen_zoom_recent_projects .dot-nav > span.dot:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+.nectar_fullscreen_zoom_recent_projects .dot-nav > span.dot {
+	cursor: pointer;
+}
+
+.nectar_fullscreen_zoom_recent_projects .sps-carousel-pause {
+	pointer-events: all;
+	margin-left: 7px;
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	border-radius: 50%;
+	width: 44px;
+	height: 44px;
+	color: inherit;
+	cursor: pointer;
+	position: relative;
+}
+
+.nectar_fullscreen_zoom_recent_projects[data-slider-text-color="dark"] .sps-carousel-pause {
+	border-color: rgba(0, 0, 0, 0.5);
+}
+
+.nectar_fullscreen_zoom_recent_projects .sps-carousel-pause .screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	white-space: nowrap;
+	border: 0;
+}

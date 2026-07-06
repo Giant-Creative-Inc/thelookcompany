@@ -1,0 +1,90 @@
+/**
+ * Partner logo infinite scroll marquee.
+ */
+
+.sms-marquee-slider {
+  width: 100%;
+}
+
+.sms-marquee-slider--align-left .sms-logo-scroll.scroll-container {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.sms-marquee-slider--align-center .sms-logo-scroll.scroll-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.sms-marquee-slider--align-right .sms-logo-scroll.scroll-container {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.sms-marquee-slider .sms-logo-scroll.scroll-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.sms-marquee-slider .sms-logo-scroll .scroll-track {
+  display: flex;
+  width: max-content;
+  animation: sms-scroll-loop 20s linear infinite;
+}
+
+.sms-marquee-slider .sms-logo-scroll .scroll-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-right: 20px;
+}
+
+.sms-marquee-slider .sms-logo-scroll .scroll-group img {
+  width: auto;
+  max-width: 200px;
+  height: auto;
+  max-height: 60px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 0;
+}
+
+.sms-marquee-slider .sms-logo-scroll .scroll-group a {
+  display: block;
+  line-height: 0;
+}
+
+.sms-marquee-slider .sms-logo-scroll.scroll-container:hover .scroll-track {
+  animation-play-state: paused;
+}
+
+@keyframes sms-scroll-loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sms-marquee-slider .sms-logo-scroll .scroll-track {
+    animation: none;
+  }
+}
