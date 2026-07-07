@@ -339,6 +339,14 @@
     }
   }
 
+  &__image-gallery {
+    .flickity-slider {
+      img {
+        border-radius: 20px;
+      }
+    }
+  }
+
   &__our-frames {
     @include desktop {
       .column-image-bg-wrap {
