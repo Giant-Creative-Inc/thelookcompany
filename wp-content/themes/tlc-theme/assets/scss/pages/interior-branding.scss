@@ -6,6 +6,7 @@
     h2 {
       position: relative;
       padding-bottom: 24px !important;
+
       &:after {
         content: '';
         position: absolute;
@@ -16,6 +17,7 @@
         background-color: $primary-color !important;
       }
     }
+
     &.teal {
       h2 {
         &:after {
@@ -23,6 +25,7 @@
         }
       }
     }
+
     &.yellow {
       h2 {
         &:after {
@@ -30,6 +33,7 @@
         }
       }
     }
+
     &.blue {
       h2 {
         &:after {
@@ -37,6 +41,7 @@
         }
       }
     }
+
     &.navy {
       h2 {
         &:after {
@@ -45,6 +50,7 @@
       }
     }
   }
+
   .center {
     .underlined-title h2 {
       &:after {
@@ -54,6 +60,7 @@
       }
     }
   }
+
   @include desktop {
     .force-desktop-text-align-center {
       .underlined-title h2 {
@@ -66,6 +73,7 @@
     }
   }
 }
+
 .brand-activations {
   &__hero {
     &.header-transparent {
@@ -73,6 +81,7 @@
       align-items: stretch;
       justify-content: center;
       flex-direction: column;
+
       > .row_col_wrap_12 {
         margin-top: 54px !important;
         @include sm_desktop {
@@ -83,6 +92,7 @@
         }
       }
     }
+
     > .row-bg-wrap {
       .inner-wrap {
         .row-bg:after {
@@ -90,14 +100,15 @@
           position: absolute;
           inset: 0;
           background: linear-gradient(180deg, rgb(12 13 14 / 50%) 0%, rgba(12, 13, 14, .5) 100%),
-                      linear-gradient(0deg, rgb(12 13 14 / 90%) .18%, rgba(12, 13, 14, 0) 85%);
+          linear-gradient(0deg, rgb(12 13 14 / 90%) .18%, rgba(12, 13, 14, 0) 85%);
           @include desktop {
             background: linear-gradient(180deg, rgb(12 13 14 / 90%) 0%, rgba(12, 13, 14, 0) 50%),
-                        linear-gradient(90deg, rgb(12 13 14 / 90%) .18%, rgba(12, 13, 14, 0) 85%);
+            linear-gradient(90deg, rgb(12 13 14 / 90%) .18%, rgba(12, 13, 14, 0) 85%);
           }
         }
       }
     }
+
     h1 {
       @include mobile {
         margin-bottom: -12px !important;
@@ -114,6 +125,7 @@
         line-height: 65px;
       }
     }
+
     .hero-text {
       font-size: 16px;
       line-height: 1.59;
@@ -128,6 +140,7 @@
       }
     }
   }
+
   &__page-menu {
     .page-submenu {
       li {
@@ -139,6 +152,7 @@
       }
     }
   }
+
   &__indoor-solutions,
   &__outdoor-solutions,
   &__flagtrax {
@@ -161,6 +175,7 @@
         }
       }
     }
+
     &:nth-child(odd) {
       > .row-bg-wrap {
         .inner-wrap {
@@ -170,6 +185,7 @@
           }
         }
       }
+
       @include desktop {
         .dark-bg {
           &:before {
@@ -179,6 +195,7 @@
         }
       }
     }
+
     .flex_gap_desktop_32px {
       .vc_column-inner {
         .wpb_wrapper {
@@ -186,15 +203,18 @@
         }
       }
     }
-    .nectar-cta.has-icon  {
+
+    .nectar-cta.has-icon {
       .link_wrap {
         flex-direction: row-reverse;
         gap: 12px;
+
         i {
           color: $brand-red;
         }
       }
     }
+
     &.teal {
       > .row-bg-wrap {
         .inner-wrap {
@@ -203,7 +223,8 @@
           }
         }
       }
-      .nectar-cta.has-icon  {
+
+      .nectar-cta.has-icon {
         .link_wrap {
           i {
             color: $brand-teal;
@@ -211,6 +232,7 @@
         }
       }
     }
+
     &.yellow {
       > .row-bg-wrap {
         .inner-wrap {
@@ -219,7 +241,8 @@
           }
         }
       }
-      .nectar-cta.has-icon  {
+
+      .nectar-cta.has-icon {
         .link_wrap {
           i {
             color: $brand-yellow;
@@ -227,6 +250,7 @@
         }
       }
     }
+
     &.blue {
       > .row-bg-wrap {
         .inner-wrap {
@@ -235,7 +259,8 @@
           }
         }
       }
-      .nectar-cta.has-icon  {
+
+      .nectar-cta.has-icon {
         .link_wrap {
           i {
             color: $brand-blue;
@@ -243,6 +268,7 @@
         }
       }
     }
+
     &.navy {
       > .row-bg-wrap {
         .inner-wrap {
@@ -251,7 +277,8 @@
           }
         }
       }
-      .nectar-cta.has-icon  {
+
+      .nectar-cta.has-icon {
         .link_wrap {
           i {
             color: $brand-navy;
@@ -259,6 +286,7 @@
         }
       }
     }
+
     @include touch_screen {
       > .row-bg-wrap {
         .inner-wrap {
@@ -291,6 +319,7 @@
       }
     }
   }
+
   &__contact-us,
   &__case-studies {
     > .row-bg-wrap {
@@ -302,12 +331,29 @@
         }
       }
     }
+
     .vc_col-sm-12 {
       .flickity-page-dots {
         bottom: -50px !important;
       }
     }
   }
+
+  &__our-frames {
+    @include desktop {
+      .column-image-bg-wrap {
+        border-radius: 24px 0 0 24px;
+      }
+    }
+
+    .row_col_wrap_12 {
+      @include desktop {
+        align-items: center;
+        justify-content: flex-end;
+      }
+    }
+  }
+
   &__case-studies {
     @include desktop {
       > .row-bg-wrap {
