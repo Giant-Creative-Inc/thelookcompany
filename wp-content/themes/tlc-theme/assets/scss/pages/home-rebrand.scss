@@ -249,6 +249,13 @@ body {
         content: "";
       }
 
+      &.flip-x {
+        &::before {
+          right: unset;
+          left: 0;
+        }
+      }
+
       &.red {
         &::before {
           background: #e51937;
