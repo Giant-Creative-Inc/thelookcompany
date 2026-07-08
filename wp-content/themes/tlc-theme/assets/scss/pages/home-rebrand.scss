@@ -89,6 +89,7 @@ body {
         font-weight: 700;
         line-height: 1 !important;
         letter-spacing: -3.2px !important;
+        max-width: 100% !important;
 
         @include desktop {
           font-size: 64px;
@@ -115,7 +116,7 @@ body {
         font-weight: 400;
         line-height: 150%;
         letter-spacing: -1.12px;
-        max-width: 100%;
+        max-width: 100% !important;
 
         @include desktop {
           font-size: 28px;
