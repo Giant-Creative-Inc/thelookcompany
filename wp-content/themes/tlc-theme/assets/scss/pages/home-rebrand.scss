@@ -231,6 +231,47 @@ body {
 
     &__block {
       position: relative;
+      overflow: hidden !important;
+      z-index: 0;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 65%;
+        height: 9px;
+        background: white;
+        z-index: 1;
+        content: "";
+      }
+
+      &.red {
+        &::before {
+          background: #e51937;
+        }
+      }
+
+      &.yellow {
+        &::before {
+          background: #f0b323;
+        }
+      }
+
+      &.mint {
+        &::before {
+          background: #58a7af;
+        }
+      }
+
+      &.teal {
+        &::before {
+          background: #527a8a;
+        }
+      }
 
       .wpb_text_column.wpb_content_element {
         width: 100%;
@@ -280,6 +321,12 @@ body {
         align-items: center;
         align-content: end;
         height: 100%;
+
+        /* Change to single column on mobile */
+        @media (max-width: 768px) {
+          grid-template-columns: 1fr;
+          gap: 20px; /* Optional: Adds vertical spacing between stacked elements */
+        }
       }
 
       .wpb_wrapper > * {
@@ -289,11 +336,21 @@ body {
       .wpb_wrapper > .nectar-cta {
         grid-column: 1;
         margin-bottom: 0 !important;
+
+        /* Reset column placement on mobile */
+        @media (max-width: 768px) {
+          grid-column: 1 / -1;
+        }
       }
 
       .wpb_wrapper > .sms-marquee-slider {
         grid-column: 2;
         min-width: 0;
+
+        /* Reset column placement on mobile */
+        @media (max-width: 768px) {
+          grid-column: 1 / -1;
+        }
       }
 
       &.retail-solution-block {
