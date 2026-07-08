@@ -49,7 +49,7 @@ body {
       position: relative;
       display: inline-block;
       color: #eef2f3;
-      font-size: 14px;
+      font-size: 14px !important;
       font-weight: 400;
       padding-left: 20px;
 
@@ -347,6 +347,7 @@ body {
         /* Reset column placement on mobile */
         @media (max-width: 768px) {
           grid-column: 1 / -1;
+          justify-self: start; /* This prevents the button from stretching full width */
         }
       }
 
@@ -368,15 +369,6 @@ body {
 
       &.interior-solution-block {
       }
-    }
-
-    &__retail-solutions {
-    }
-
-    &__sports-and-events {
-    }
-
-    &__interior-branding {
     }
   }
 
