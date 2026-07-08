@@ -422,7 +422,7 @@ body {
         font-feature-settings: "liga" off,
         "clig" off;
         font-family: $font-family-aktiv;
-        font-size: 36px;
+        font-size: 36px !important;
         font-style: normal;
         font-weight: 600 !important;
         line-height: 100%;
@@ -434,7 +434,7 @@ body {
         font-feature-settings: "liga" off,
         "clig" off;
         font-family: $font-family-aktiv;
-        font-size: 20px;
+        font-size: 20px !important;
         font-style: normal;
         font-weight: 400;
         line-height: 150%;
