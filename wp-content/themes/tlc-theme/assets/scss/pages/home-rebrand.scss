@@ -13,7 +13,11 @@
 }
 
 .tlc-glow-btn {
-  @include tlc-glow-btn;
+  display: block;
+
+  .link_text {
+    @include tlc-glow-btn;
+  }
 }
 
 @keyframes tlc-btn-glow-pulse {
@@ -161,7 +165,7 @@ body {
       margin-inline: auto;
 
       @include desktop {
-        max-width: 1480px;
+        max-width: 1204px;
       }
 
       .nectar-text-inline-images__image {
@@ -169,31 +173,40 @@ body {
       }
 
       .nectar-text-inline-images__inner {
-        word-spacing: 7px;
-
         .word {
           font-size: 32px;
           font-weight: 700;
 
           font-style: normal;
           line-height: 100%; /* 64px */
-          //letter-spacing: -3.2px;
+          letter-spacing: -3.2px;
 
           @include desktop {
             font-size: 64px;
           }
         }
 
-        //.nectar-text-inline-images__marker {
-        //  width: 121px;
-        //  height: 79px;
-        //  transform: translateY(-50%);
-        //
-        //  img {
-        //    width: 121px;
-        //    height: 79px;
-        //  }
-        //}
+        .nectar-text-inline-images__marker {
+          width: 65px;
+          height: 43px;
+          //transform: translateY(-50%);
+
+          img {
+            width: 65px;
+            height: 43px;
+          }
+
+          @include desktop {
+            width: 121px;
+            height: 79px;
+            //transform: translateY(-50%);
+
+            img {
+              width: 121px;
+              height: 79px;
+            }
+          }
+        }
       }
     }
   }
@@ -219,9 +232,17 @@ body {
 
   &-subpage-btn.nectar-cta {
     .link_wrap .link_text {
-      font-weight: 500;
       font-family: $font-family-aktiv;
-      padding-right: 24px !important;
+      transition: background-color 0.3s ease;
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-size: 18px !important;
+      font-style: normal;
+      font-weight: 500 !important;
+      line-height: 1.5; /* 27px */
+      letter-spacing: -0.72px;
+      padding: 12px 24px;
+      border-radius: 1000px;
+      overflow: hidden;
 
       .arrow,
       &::after {
@@ -556,17 +577,57 @@ body {
   }
 
   &-locations {
+    img {
+      margin-inline: auto;
+      width: 100%;
+    }
+
     &__description {
       color: #eef2f3;
+      font-size: 18px !important;
+      letter-spacing: -0.8px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.5; /* 30px */
+      font-family: $font-family-aktiv;
+
+      @include desktop {
+        font-size: 20px !important;
+      }
     }
 
     &__phone-number a {
       color: #ffffff;
       text-decoration: none;
+      font-size: 16px !important;
+
+      @include desktop {
+        font-size: 22px !important;
+      }
 
       &:hover,
       &:focus {
         text-decoration: underline;
+      }
+    }
+
+    .sgl-map {
+      width: 150%;
+      margin-left: -25%;
+
+      @include desktop {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    .sgl-pin__dot {
+      width: 6px;
+      height: 6px;
+
+      @include desktop {
+        width: 12px;
+        height: 12px;
       }
     }
   }

@@ -81,19 +81,19 @@ $breakpoint-3xl: 1920px;
 
 
 @mixin tlc-glow-btn($bg-color: #E51937, $text-color: #ffffff) {
-  padding: 16px 40px;
-  border-radius: 1000px;
-  background-color: $bg-color;
+  padding: 16px 40px !important;
+  border-radius: 1000px !important;
+  background-color: $bg-color !important;
   // Automatically generates a 50% opacity shadow based on the provided $bg-color
-  box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.25) inset, 0 12px 32px 1px rgba($bg-color, 0.5);
-  color: $text-color;
-  font-family: $font-family-aktiv;
+  box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.25) inset, 0 12px 32px 1px rgba($bg-color, 0.5) !important;
+  color: $text-color !important;
+  font-family: $font-family-aktiv !important;
   font-size: 16px !important;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%;
-  letter-spacing: -0.88px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  line-height: 150% !important;
+  letter-spacing: -0.88px !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
 
   &:hover,
   &:focus {

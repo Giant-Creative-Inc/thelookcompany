@@ -31,9 +31,9 @@ function salient_child_enqueue_styles() {
     }
 
     // Home rebrand page: custom JS for market section scroll-to-section.
-    // if ('home-rebrand' === $slug) {
-    //   wp_enqueue_script('tlc-home-rebrand-js', get_stylesheet_directory_uri() . '/assets/js/home-rebrand.js', ['jquery'], filemtime(get_stylesheet_directory() . '/assets/js/home-rebrand.js'), true);
-    // }
+    if ('home-rebrand' === $slug) {
+      wp_enqueue_script('tlc-home-rebrand-js', get_stylesheet_directory_uri() . '/assets/js/home-rebrand.js', ['jquery'], filemtime(get_stylesheet_directory() . '/assets/js/home-rebrand.js'), true);
+    }
   }
 
   if (is_singular('case-study')) {
