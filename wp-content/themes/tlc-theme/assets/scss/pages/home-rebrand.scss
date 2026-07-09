@@ -482,7 +482,7 @@ body {
 
       @include tlc-column-hover-effect();
 
-      .column-image-bg {
+      .column-image-bg-wrap > .inner-wrap {
         &::before {
           position: absolute;
           top: 0;
@@ -490,14 +490,14 @@ body {
           width: 65%;
           height: 9px;
           background: white;
-          z-index: 1;
+          z-index: 2;
           content: "";
         }
       }
 
 
       &.red {
-        .column-image-bg {
+        .column-image-bg-wrap > .inner-wrap {
           &::before {
             background: #e51937;
           }
@@ -512,7 +512,7 @@ body {
       }
 
       &.yellow {
-        .column-image-bg {
+        .column-image-bg-wrap > .inner-wrap {
           &::before {
             background: #f0b323;
           }
@@ -527,7 +527,7 @@ body {
       }
 
       &.mint {
-        .column-image-bg {
+        .column-image-bg-wrap > .inner-wrap {
           &::before {
             background: #58a7af;
           }
@@ -542,7 +542,7 @@ body {
       }
 
       &.teal {
-        .column-image-bg {
+        .column-image-bg-wrap > .inner-wrap {
           &::before {
             background: #527a8a;
           }
