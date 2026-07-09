@@ -13,12 +13,17 @@
 }
 
 .tlc-glow-btn {
-  display: block;
+  display: inline-block;
 
   .link_text {
     @include tlc-glow-btn;
   }
 }
+
+.tlc-arrow-btn {
+  display: inline-block;
+}
+
 
 @keyframes tlc-btn-glow-pulse {
   0%,
@@ -39,6 +44,42 @@ body {
 }
 
 .home {
+  &-bg-pattern {
+    > .row-bg-wrap {
+      .inner-wrap {
+        .row-bg {
+          //max-width: 720px;
+          object-fit: contain;
+          margin-inline: auto;
+
+          img {
+            margin-top: 45px;
+            position: relative;
+            margin-inline: auto;
+            max-width: 720px;
+          }
+
+          .row-bg-img {
+            object-fit: contain;
+          }
+        }
+      }
+    }
+
+    &-left {
+      > .row-bg-wrap {
+        .inner-wrap {
+          .row-bg {
+            img {
+              margin-inline: 0;
+              max-width: 720px;
+            }
+          }
+        }
+      }
+    }
+  }
+
   &-section-heading {
     h2 {
       color: #ffffff;
@@ -437,43 +478,81 @@ body {
       position: relative;
       overflow: hidden !important;
       z-index: 0;
-      padding-right: 0 !important;
-      padding-left: 0 !important;
-      margin-right: 0 !important;
-      margin-left: 0 !important;
+      border-radius: 12px;
 
-      &::before {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 65%;
-        height: 9px;
-        background: white;
-        z-index: 1;
-        content: "";
+      @include tlc-column-hover-effect();
+
+      .column-image-bg {
+        &::before {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 65%;
+          height: 9px;
+          background: white;
+          z-index: 1;
+          content: "";
+        }
       }
 
+
       &.red {
-        &::before {
-          background: #e51937;
+        .column-image-bg {
+          &::before {
+            background: #e51937;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          .nectar-cta .link_wrap {
+            color: #e51937 !important;
+          }
         }
       }
 
       &.yellow {
-        &::before {
-          background: #f0b323;
+        .column-image-bg {
+          &::before {
+            background: #f0b323;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          .nectar-cta .link_wrap {
+            color: #f0b323 !important;
+          }
         }
       }
 
       &.mint {
-        &::before {
-          background: #58a7af;
+        .column-image-bg {
+          &::before {
+            background: #58a7af;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          .nectar-cta .link_wrap {
+            color: #58a7af !important;
+          }
         }
       }
 
       &.teal {
-        &::before {
-          background: #527a8a;
+        .column-image-bg {
+          &::before {
+            background: #527a8a;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          .nectar-cta .link_wrap {
+            color: #527a8a !important;
+          }
         }
       }
 
@@ -636,4 +715,29 @@ body {
 // override global row spacing on rebrand page. Use section & row spacing in WP Bakery
 .vc_row .row_col_wrap_12 {
   padding: 0 !important;
+}
+
+// markets section hover effect
+.nectar-sticky-media-section__content-section {
+  position: relative;
+
+  .nectar-sticky-media-section__media {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover,
+  &:focus {
+    .nectar-sticky-media-section__media {
+      transform: scale(1.05);
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+  }
 }

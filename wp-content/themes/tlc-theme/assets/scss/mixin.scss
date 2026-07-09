@@ -106,3 +106,22 @@ $breakpoint-3xl: 1920px;
     font-size: 22px !important;
   }
 }
+
+
+@mixin tlc-column-hover-effect($overlay-color: #000000, $overlay-opacity: 0.4) {
+  &:hover,
+  &:focus {
+    .column-image-bg {
+      transform: scale(1.05);
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba($overlay-color, $overlay-opacity);
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+  }
+}
