@@ -351,13 +351,17 @@ body {
 
       .wpb_wrapper > .nectar-cta {
         grid-column: 1;
-        margin-bottom: 0 !important;
+        margin-bottom: 20px !important;
+
+        @include desktop {
+          margin-bottom: 0 !important;
+        }
 
         /* Reset column placement on mobile */
         @media (max-width: 768px) {
           grid-column: 1 / -1;
           justify-self: start; /* This prevents the button from stretching full width */
-          margin-bottom: 20px;
+
         }
       }
 
