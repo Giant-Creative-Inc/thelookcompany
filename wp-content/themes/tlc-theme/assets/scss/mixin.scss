@@ -88,7 +88,7 @@ $breakpoint-3xl: 1920px;
   box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.25) inset, 0 12px 32px 1px rgba($bg-color, 0.5);
   color: $text-color;
   font-family: $font-family-aktiv;
-  font-size: 22px !important;
+  font-size: 16px !important;
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
@@ -99,5 +99,10 @@ $breakpoint-3xl: 1920px;
   &:focus {
     transform: translateY(-3px);
     animation: tlc-btn-glow-pulse 1.6s ease-in-out infinite;
+  }
+
+
+  @include desktop {
+    font-size: 22px !important;
   }
 }
