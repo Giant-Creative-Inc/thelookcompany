@@ -13,8 +13,17 @@
 }
 
 .tlc-glow-btn {
-  @include tlc-glow-btn;
+  display: inline-block;
+
+  .link_text {
+    @include tlc-glow-btn;
+  }
 }
+
+.tlc-arrow-btn {
+  display: inline-block;
+}
+
 
 @keyframes tlc-btn-glow-pulse {
   0%,
@@ -35,6 +44,42 @@ body {
 }
 
 .home {
+  &-bg-pattern {
+    > .row-bg-wrap {
+      .inner-wrap {
+        .row-bg {
+          //max-width: 720px;
+          object-fit: contain;
+          margin-inline: auto;
+
+          img {
+            margin-top: 45px;
+            position: relative;
+            margin-inline: auto;
+            max-width: 720px;
+          }
+
+          .row-bg-img {
+            object-fit: contain;
+          }
+        }
+      }
+    }
+
+    &-left {
+      > .row-bg-wrap {
+        .inner-wrap {
+          .row-bg {
+            img {
+              margin-inline: 0;
+              max-width: 720px;
+            }
+          }
+        }
+      }
+    }
+  }
+
   &-section-heading {
     h2 {
       color: #ffffff;
@@ -161,7 +206,7 @@ body {
       margin-inline: auto;
 
       @include desktop {
-        max-width: 1480px;
+        max-width: 1204px;
       }
 
       .nectar-text-inline-images__image {
@@ -169,31 +214,40 @@ body {
       }
 
       .nectar-text-inline-images__inner {
-        word-spacing: 7px;
-
         .word {
           font-size: 32px;
           font-weight: 700;
 
           font-style: normal;
           line-height: 100%; /* 64px */
-          //letter-spacing: -3.2px;
+          letter-spacing: -3.2px;
 
           @include desktop {
             font-size: 64px;
           }
         }
 
-        //.nectar-text-inline-images__marker {
-        //  width: 121px;
-        //  height: 79px;
-        //  transform: translateY(-50%);
-        //
-        //  img {
-        //    width: 121px;
-        //    height: 79px;
-        //  }
-        //}
+        .nectar-text-inline-images__marker {
+          width: 65px;
+          height: 43px;
+          //transform: translateY(-50%);
+
+          img {
+            width: 65px;
+            height: 43px;
+          }
+
+          @include desktop {
+            width: 121px;
+            height: 79px;
+            //transform: translateY(-50%);
+
+            img {
+              width: 121px;
+              height: 79px;
+            }
+          }
+        }
       }
     }
   }
@@ -219,9 +273,17 @@ body {
 
   &-subpage-btn.nectar-cta {
     .link_wrap .link_text {
-      font-weight: 500;
       font-family: $font-family-aktiv;
-      padding-right: 24px !important;
+      transition: background-color 0.3s ease;
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-size: 18px !important;
+      font-style: normal;
+      font-weight: 500 !important;
+      line-height: 1.5; /* 27px */
+      letter-spacing: -0.72px;
+      padding: 12px 24px;
+      border-radius: 1000px;
+      overflow: hidden;
 
       .arrow,
       &::after {
@@ -416,43 +478,81 @@ body {
       position: relative;
       overflow: hidden !important;
       z-index: 0;
-      padding-right: 0 !important;
-      padding-left: 0 !important;
-      margin-right: 0 !important;
-      margin-left: 0 !important;
+      border-radius: 12px;
 
-      &::before {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 65%;
-        height: 9px;
-        background: white;
-        z-index: 1;
-        content: "";
+      @include tlc-column-hover-effect();
+
+      .column-image-bg-wrap > .inner-wrap {
+        &::before {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 65%;
+          height: 9px;
+          background: white;
+          z-index: 2;
+          content: "";
+        }
       }
 
+
       &.red {
-        &::before {
-          background: #e51937;
+        .column-image-bg-wrap > .inner-wrap {
+          &::before {
+            background: #e51937;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          .nectar-cta .link_wrap {
+            color: #e51937 !important;
+          }
         }
       }
 
       &.yellow {
-        &::before {
-          background: #f0b323;
+        .column-image-bg-wrap > .inner-wrap {
+          &::before {
+            background: #f0b323;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          .nectar-cta .link_wrap {
+            color: #f0b323 !important;
+          }
         }
       }
 
       &.mint {
-        &::before {
-          background: #58a7af;
+        .column-image-bg-wrap > .inner-wrap {
+          &::before {
+            background: #58a7af;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          .nectar-cta .link_wrap {
+            color: #58a7af !important;
+          }
         }
       }
 
       &.teal {
-        &::before {
-          background: #527a8a;
+        .column-image-bg-wrap > .inner-wrap {
+          &::before {
+            background: #527a8a;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          .nectar-cta .link_wrap {
+            color: #527a8a !important;
+          }
         }
       }
 
@@ -461,11 +561,15 @@ body {
         font-feature-settings: "liga" off,
         "clig" off;
         font-family: $font-family-aktiv;
-        font-size: 36px !important;
+        font-size: 28px !important;
         font-style: normal;
         font-weight: 600 !important;
         line-height: 100%;
         letter-spacing: -1.8px;
+
+        @include desktop {
+          font-size: 36px !important;
+        }
       }
 
       p {
@@ -556,18 +660,68 @@ body {
   }
 
   &-locations {
+    img {
+      margin-inline: auto;
+      width: 100%;
+    }
+
     &__description {
       color: #eef2f3;
+      font-size: 18px !important;
+      letter-spacing: -0.8px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.5; /* 30px */
+      font-family: $font-family-aktiv;
+
+      @include desktop {
+        font-size: 20px !important;
+      }
     }
 
     &__phone-number a {
       color: #ffffff;
       text-decoration: none;
+      font-size: 16px !important;
+
+      @include desktop {
+        font-size: 22px !important;
+      }
 
       &:hover,
       &:focus {
         text-decoration: underline;
       }
+    }
+
+    .sgl-map {
+      width: 150%;
+      margin-left: -25%;
+
+      @include desktop {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    .sgl-pin__dot {
+      width: 6px;
+      height: 6px;
+
+      @include desktop {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+
+  &-product-icon {
+    width: 64px;
+    height: 64px;
+
+    @include desktop {
+      width: 92px;
+      height: 92px;
     }
   }
 }
@@ -575,4 +729,29 @@ body {
 // override global row spacing on rebrand page. Use section & row spacing in WP Bakery
 .vc_row .row_col_wrap_12 {
   padding: 0 !important;
+}
+
+// markets section hover effect
+.nectar-sticky-media-section__content-section {
+  position: relative;
+
+  .nectar-sticky-media-section__media {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover,
+  &:focus {
+    .nectar-sticky-media-section__media {
+      transform: scale(1.05);
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+  }
 }
