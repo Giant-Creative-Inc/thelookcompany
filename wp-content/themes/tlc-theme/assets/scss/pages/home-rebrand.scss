@@ -160,6 +160,10 @@ body {
     .nectar-text-inline-images {
       margin-inline: auto;
 
+      @include desktop {
+        max-width: 1480px;
+      }
+
       .nectar-text-inline-images__image {
         border-radius: 6px;
       }
