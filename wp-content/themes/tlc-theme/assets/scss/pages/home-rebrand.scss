@@ -98,6 +98,12 @@ body {
       }
 
       .sps-slide-actions {
+        gap: 40px;
+
+        @include desktop {
+          gap: 24px;
+        }
+
         a {
           @include tlc-glow-btn;
 
@@ -351,6 +357,7 @@ body {
         @media (max-width: 768px) {
           grid-column: 1 / -1;
           justify-self: start; /* This prevents the button from stretching full width */
+          margin-bottom: 20px;
         }
       }
 
