@@ -35,9 +35,22 @@ body {
 }
 
 .home {
-  &-hero,
-  &-about-us {
-    font-family: $font-family-aktiv;
+  &-section-heading {
+    h2 {
+      color: #ffffff;
+      font-feature-settings: 'liga' off, 'clig' off;
+
+      font-family: $font-family-aktiv;
+      font-size: 32px !important;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 100%;
+      letter-spacing: -1.6px;
+
+      @include desktop {
+        font-size: 48px !important;
+      }
+    }
   }
 
   &-section-title {
@@ -70,6 +83,11 @@ body {
         0 0 14px 1px #e51937;
       }
     }
+  }
+
+  &-hero,
+  &-about-us {
+    font-family: $font-family-aktiv;
   }
 
   &-hero {
@@ -322,7 +340,6 @@ body {
           font-weight: 400;
           line-height: 150%; /* 30px */
           letter-spacing: -0.8px;
-          margin-bottom: 48px;
         }
       }
 
