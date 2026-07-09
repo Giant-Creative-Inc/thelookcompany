@@ -561,11 +561,15 @@ body {
         font-feature-settings: "liga" off,
         "clig" off;
         font-family: $font-family-aktiv;
-        font-size: 36px !important;
+        font-size: 28px !important;
         font-style: normal;
         font-weight: 600 !important;
         line-height: 100%;
         letter-spacing: -1.8px;
+
+        @include desktop {
+          font-size: 36px !important;
+        }
       }
 
       p {
@@ -708,6 +712,16 @@ body {
         width: 12px;
         height: 12px;
       }
+    }
+  }
+
+  &-product-icon {
+    width: 64px;
+    height: 64px;
+
+    @include desktop {
+      width: 92px;
+      height: 92px;
     }
   }
 }

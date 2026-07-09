@@ -105,6 +105,11 @@ $breakpoint-3xl: 1920px;
   @include desktop {
     font-size: 22px !important;
   }
+
+
+  @media (max-width: 360px) {
+    font-size: 14px !important;
+  }
 }
 
 
