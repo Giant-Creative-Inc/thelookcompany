@@ -25,7 +25,6 @@
 .sgl-map {
 	position: relative;
 	width: 100%;
-	aspect-ratio: 2 / 1;
 	max-height: 70vh;
 	margin: 0 auto;
 }
