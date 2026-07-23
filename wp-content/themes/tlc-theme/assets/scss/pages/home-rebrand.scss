@@ -269,6 +269,18 @@ body {
         height: 33px;
       }
     }
+
+    .nectar-video-box:not([data-mouse-style=see_through_contrast]) a.nectar_video_lightbox {
+      width: 120px !important;
+      height: 120px !important;
+      box-shadow: 0 12px 32px 1px rgba(229, 25, 55, 0.5),
+      0 4px 4px 0 rgba(255, 255, 255, 0.25) inset !important;
+
+      svg {
+        width: 33px;
+        height: 33px;
+      }
+    }
   }
 
   &-subpage-btn.nectar-cta {
@@ -319,6 +331,20 @@ body {
     }
 
     &__stack-nav {
+    }
+
+    &__sticky___blocks {
+      .row-bg-wrap {
+        .row-bg {
+          z-index: 0;
+          position: relative;
+          overflow: hidden !important;
+
+          &::before {
+            @include content-overlay('middle');
+          }
+        }
+      }
     }
 
     &__block {
@@ -430,6 +456,10 @@ body {
           grid-template-columns: 1fr;
           gap: 20px; /* Optional: Adds vertical spacing between stacked elements */
         }
+
+        @include desktop {
+          align-content: center;
+        }
       }
 
       .wpb_wrapper > * {
@@ -474,11 +504,118 @@ body {
   }
 
   &-case-studies {
+    .nectar-post-grid-wrap {
+      .nectar-post-grid {
+        .nectar-post-grid-item {
+          position: relative;
+          overflow: hidden !important;
+          z-index: 0;
+          border-radius: 12px;
+
+          .item-main {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            align-content: end;
+            align-items: start;
+            justify-content: end;
+
+            .post-heading {
+              color: #fff;
+              font-feature-settings: "liga" off,
+              "clig" off;
+              font-family: $font-family-aktiv;
+              font-size: 28px !important;
+              font-style: normal;
+              font-weight: 600 !important;
+              line-height: 100%;
+              letter-spacing: -1.8px;
+
+              @include desktop {
+                font-size: 36px !important;
+              }
+            }
+
+            .nectar-post-grid-item__excerpt-wrap {
+              margin-top: 12px;
+
+              @include desktop {
+                margin-top: 16px;
+              }
+            }
+
+            .meta-excerpt {
+              color: #fff;
+              font-feature-settings: "liga" off,
+              "clig" off;
+              font-family: $font-family-aktiv;
+              font-size: 16px !important;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 150%;
+              letter-spacing: -0.8px;
+
+              @include desktop {
+                font-size: 20px !important;
+              }
+            }
+          }
+
+          &::before {
+            position: absolute;
+
+            top: 0;
+            right: 0;
+            width: 65%;
+            height: 9px;
+            background: white;
+            z-index: 2;
+            content: "";
+          }
+
+          &:nth-child(1) {
+            &::before {
+              background: #e51937;
+            }
+          }
+
+          &:nth-child(2) {
+            &::before {
+              background: #f0b323;
+            }
+          }
+
+          &:nth-child(3) {
+            &::before {
+              background: #58a7af;
+            }
+          }
+
+          &:nth-child(4) {
+            &::before {
+              background: #527a8a;
+            }
+          }
+        }
+      }
+    }
+
     &__block {
       position: relative;
       overflow: hidden !important;
       z-index: 0;
       border-radius: 12px;
+
+
+      .column-image-bg {
+        z-index: 0;
+        position: relative;
+        overflow: hidden !important;
+
+        &::before {
+          @include content-overlay('bottom');
+        }
+      }
 
       @include tlc-column-hover-effect();
 
@@ -587,6 +724,12 @@ body {
           font-size: 20px !important;
         }
       }
+    }
+  }
+
+  &-products {
+    &__block {
+
     }
   }
 

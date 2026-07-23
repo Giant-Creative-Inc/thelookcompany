@@ -24,10 +24,48 @@
 	color: inherit;
 	cursor: pointer;
 	position: relative;
+	padding: 0;
+	-webkit-appearance: none;
+	appearance: none;
+	box-shadow: none;
 }
 
 .nectar_fullscreen_zoom_recent_projects[data-slider-text-color="dark"] .sps-carousel-pause {
 	border-color: rgba(0, 0, 0, 0.5);
+}
+
+.nectar_fullscreen_zoom_recent_projects .sps-carousel-pause .sps-pause-icon,
+.nectar_fullscreen_zoom_recent_projects .sps-carousel-pause .sps-play-icon {
+	width: 44px;
+	height: 14px;
+	line-height: 14px;
+	font-size: 14px;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	-ms-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	color: #fff;
+}
+
+.nectar_fullscreen_zoom_recent_projects[data-slider-text-color="dark"] .sps-carousel-pause .sps-pause-icon,
+.nectar_fullscreen_zoom_recent_projects[data-slider-text-color="dark"] .sps-carousel-pause .sps-play-icon {
+	color: #000;
+}
+
+.nectar_fullscreen_zoom_recent_projects .sps-carousel-pause .sps-play-icon {
+	display: none;
+	left: 1px;
+}
+
+.nectar_fullscreen_zoom_recent_projects .sps-carousel-pause[aria-pressed="true"] .sps-pause-icon {
+	display: none;
+}
+
+.nectar_fullscreen_zoom_recent_projects .sps-carousel-pause[aria-pressed="true"] .sps-play-icon {
+	display: block;
 }
 
 .nectar_fullscreen_zoom_recent_projects .sps-carousel-pause .screen-reader-text {

@@ -119,7 +119,7 @@ $breakpoint-3xl: 1920px;
     .column-image-bg {
       transform: scale(1.05);
 
-      &::before {
+      &::after {
         content: "";
         position: absolute;
         inset: 0;
@@ -128,5 +128,42 @@ $breakpoint-3xl: 1920px;
         pointer-events: none;
       }
     }
+  }
+}
+
+
+@mixin content-overlay($position: 'bottom') {
+  // Base structural properties for the overlay
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+
+  // The base solid transparent layer (#00000066 / rgba 0.4)
+  $solid-layer: rgba(0, 0, 0, 0.4);
+
+  // Apply gradient based on the passed position parameter
+  @if $position == 'top' {
+    // Dark at the top, fades to transparent towards the bottom
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 60%),
+    $solid-layer;
+
+  } @else if $position == 'middle' {
+    // Transparent at top/bottom, dark in the middle
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 0) 85%),
+    $solid-layer;
+
+  } @else if $position == 'bottom' {
+    // Transparent at the top, dark at the bottom (using your original values)
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 28.86%, rgba(0, 0, 0, 0.75) 67.68%),
+    $solid-layer;
+
+  } @else {
+    // Fallback if no valid parameter is passed (just the solid color)
+    background: $solid-layer;
   }
 }
