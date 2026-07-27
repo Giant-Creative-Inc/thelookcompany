@@ -126,74 +126,11 @@
   &__pillar-wraps,
   &__media-backdrops,
   &__seat-covers{
-    > .row-bg-wrap {
-      .inner-wrap {
-        &:before {
-          content: '';
-          position: absolute;
-          left: 0%;
-          bottom: 0;
-          max-width: 1312px;
-          background-color: $brand-yellow !important;
-          width: 100vw;
-          height: 7px;
-          z-index: 2;
-          @include desktop {
-            height: 15px;
-            width: 68vw;
-          }
-        }
-      }
-    }
-    &:nth-child(even) {
-      > .row-bg-wrap {
-        .inner-wrap {
-          &:before {
-            right: 0;
-            left: auto;
-          }
-        }
-      }
-      @include desktop {
-        .dark-bg {
-          &:before {
-            right: auto;
-            left: 0;
-          }
-        }
-      }
-    }
-    @include touch_screen {
-      > .row-bg-wrap {
-        .inner-wrap {
-          &:after {
-            content: '';
-            position: absolute;
-            left: 0%;
-            bottom: 0;
-            z-index: 1;
-            background: rgba(22, 26, 30, .85);
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-          }
-        }
-      }
-    }
-    @include desktop {
-      .dark-bg {
-        &:before {
-          content: "";
-          position: absolute;
-          width: 100vw;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          background: rgba(22, 26, 30, .85);
-          border-radius: 50px;
-        }
-      }
-    }
+    @include zigzag-section($accent: $brand-yellow);
+  }
+  &__on-wall-treatments,
+  &__media-backdrops {
+    @include zigzag-section(right);
   }
   &__contact-us,
   &__case-studies {
