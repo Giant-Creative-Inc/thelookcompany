@@ -132,6 +132,17 @@ $slide_params = array_merge(
 				),
 			),
 		),
+		array(
+			'type'        => 'textfield',
+			'heading'     => esc_html__( 'Logo Scroll Duration (seconds)', 'salient-portfolio-slider' ),
+			'param_name'  => 'logo_scroll_duration',
+			'value'       => '20',
+			'description' => esc_html__( 'Time for one full logo loop. Higher = slower. Longer logo lists usually need a higher value (e.g. 40–60) to match shorter ones.', 'salient-portfolio-slider' ),
+			'dependency'  => array(
+				'element' => 'slide_section',
+				'value'   => array( 'logo_slider' ),
+			),
+		),
 	)
 );
 

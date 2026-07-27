@@ -155,12 +155,42 @@ if ( ! function_exists( 'salient_marquee_slider_sanitize_align' ) ) {
 	}
 }
 
+if ( ! function_exists( 'salient_marquee_slider_sanitize_scroll_duration' ) ) {
+	/**
+	 * Sanitize scroll duration in seconds.
+	 *
+	 * @param mixed $duration Raw duration input.
+	 * @return float Duration between 5 and 120, default 20.
+	 */
+	function salient_marquee_slider_sanitize_scroll_duration( $duration ) {
+		if ( ! is_numeric( $duration ) ) {
+			return 20.0;
+		}
+
+		$duration = (float) $duration;
+
+		if ( $duration <= 0 ) {
+			return 20.0;
+		}
+
+		if ( $duration < 5 ) {
+			return 5.0;
+		}
+
+		if ( $duration > 120 ) {
+			return 120.0;
+		}
+
+		return $duration;
+	}
+}
+
 if ( ! function_exists( 'salient_marquee_slider_render_marquee' ) ) {
 	/**
 	 * Render the infinite CSS scroll logo strip.
 	 *
 	 * @param array $logos Parsed logo rows.
-	 * @param array $args  Optional aria_label, max_width, and align keys.
+	 * @param array $args  Optional aria_label, scroll_duration, max_width, and align keys.
 	 * @return string
 	 */
 	function salient_marquee_slider_render_marquee( $logos, $args = array() ) {
@@ -171,9 +201,10 @@ if ( ! function_exists( 'salient_marquee_slider_render_marquee' ) ) {
 		$args = wp_parse_args(
 			is_array( $args ) ? $args : array( 'aria_label' => (string) $args ),
 			array(
-				'aria_label' => '',
-				'max_width'  => '',
-				'align'      => 'left',
+				'aria_label'      => '',
+				'scroll_duration' => '20',
+				'max_width'       => '',
+				'align'           => 'left',
 			)
 		);
 
@@ -196,13 +227,19 @@ if ( ! function_exists( 'salient_marquee_slider_render_marquee' ) ) {
 			$aria_label = esc_html__( 'Partner logos', 'salient-marquee-slider' );
 		}
 
-		$align      = salient_marquee_slider_sanitize_align( $args['align'] );
-		$max_width  = salient_marquee_slider_sanitize_max_width( $args['max_width'] );
-		$style_attr = '';
+		$align           = salient_marquee_slider_sanitize_align( $args['align'] );
+		$max_width       = salient_marquee_slider_sanitize_max_width( $args['max_width'] );
+		$scroll_duration = salient_marquee_slider_sanitize_scroll_duration( $args['scroll_duration'] );
+
+		$styles = array(
+			'--sms-scroll-duration:' . $scroll_duration . 's',
+		);
 
 		if ( '' !== $max_width ) {
-			$style_attr = ' style="max-width:' . esc_attr( $max_width ) . ';"';
+			$styles[] = 'max-width:' . $max_width;
 		}
+
+		$style_attr = ' style="' . esc_attr( implode( ';', $styles ) ) . ';"';
 
 		$wrapper_class = 'sms-marquee-slider sms-marquee-slider--align-' . esc_attr( $align );
 

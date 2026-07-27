@@ -137,7 +137,10 @@ if ( ! function_exists( 'salient_portfolio_slider_render' ) ) {
 			}
 
 			$logo_markup = salient_portfolio_slider_render_logo_scroll(
-				salient_portfolio_slider_parse_slide_logos( $slide )
+				salient_portfolio_slider_parse_slide_logos( $slide ),
+				array(
+					'scroll_duration' => isset( $slide['logo_scroll_duration'] ) ? $slide['logo_scroll_duration'] : '20',
+				)
 			);
 
 			$markup .= $text_markup;

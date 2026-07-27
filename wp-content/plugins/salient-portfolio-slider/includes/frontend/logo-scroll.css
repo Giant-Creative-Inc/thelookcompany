@@ -75,7 +75,7 @@ body .nectar_fullscreen_zoom_recent_projects .project-slide.no-trans .project-in
 .nectar_fullscreen_zoom_recent_projects .sps-logo-scroll .scroll-track {
 	display: flex;
 	width: max-content;
-	animation: sps-scroll-loop 20s linear infinite;
+	animation: sps-scroll-loop var(--sps-scroll-duration, 20s) linear infinite;
 }
 
 .nectar_fullscreen_zoom_recent_projects .sps-logo-scroll .scroll-group {
