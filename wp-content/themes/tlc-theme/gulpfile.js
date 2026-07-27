@@ -112,6 +112,7 @@ const cssEntries = [
   ['./assets/scss/pages/videos.scss', 'videos.min.css'],
   ['./assets/scss/pages/guides.scss', 'guides.min.css'],
   ['./assets/scss/pages/brand-activations.scss', 'brand-activations.min.css'],
+  ['./assets/scss/pages/interior-branding.scss', 'interior-branding.min.css'],
   ['./assets/scss/pages/the-look-group.scss', 'the-look-group.min.css'],
   ['./assets/scss/pages/careers.scss', 'careers.min.css'],
   ['./assets/scss/pages/lightboxes.scss', 'lightboxes.min.css'],
@@ -120,7 +121,7 @@ const cssEntries = [
   ['./assets/scss/pages/signs-and-banners.scss', 'signs-and-banners.min.css'],
   ['./assets/scss/pages/services.scss', 'services.min.css'],
   ['./assets/scss/pages/franchise-solutions.scss', 'franchise-solutions.min.css'],
-  ["./assets/scss/pages/landing-pages.scss", "landing-pages.min.css"],
+  ['./assets/scss/pages/home-rebrand.scss', 'home-rebrand.min.css'],
 ];
 
 const stylesBuild = parallel(...cssEntries.map(([file, out]) => buildCSS(file, out, false)));
@@ -169,7 +170,7 @@ function optimizeImages() {
 
 // Run manually after `gulp build`: gulp critical
 // Requires the local dev site to be running at SITE_URL.
-const SITE_URL = 'http://staging.thelookcompany.local/';
+const SITE_URL = 'https://thelookcompany.local/';
 
 // All pages to extract critical CSS from.
 // Critical CSS is merged and deduplicated into a single critical.min.css.
@@ -177,7 +178,9 @@ const CRITICAL_PAGES = [
   '/',
   // "/contact",
   // "/thank-you",
-  '/landing-page'
+  '/franchise-solutions',
+  '/home-rebrand',
+  '/interior-branding',
 ];
 
 const CRITICAL_OPTIONS = {

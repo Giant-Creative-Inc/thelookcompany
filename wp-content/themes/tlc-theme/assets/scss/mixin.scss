@@ -1,3 +1,4 @@
+@use 'variables';
 
 $breakpoint-sm: 481px;
 $breakpoint-md: 690px;
@@ -23,6 +24,7 @@ $breakpoint-3xl: 1920px;
     @content;
   }
 }
+
 @mixin touch_screen_up {
   @media (min-width: 1025px) {
     @content;
@@ -34,11 +36,13 @@ $breakpoint-3xl: 1920px;
     @content;
   }
 }
+
 @mixin tablet_down {
   @media (max-width: #{$breakpoint-md + 1}) {
     @content;
   }
 }
+
 @mixin tablet_up {
   @media (min-width: #{$breakpoint-md}) {
     @content;
@@ -50,6 +54,7 @@ $breakpoint-3xl: 1920px;
     @content;
   }
 }
+
 @mixin sm_desktop {
   @media (min-width: #{$breakpoint-lg}) and (max-width: #{$breakpoint-xl - 1px}) {
     @content;
@@ -61,13 +66,104 @@ $breakpoint-3xl: 1920px;
     @content;
   }
 }
+
 @mixin xl_desktop {
   @media (min-width: #{$breakpoint-2xl}) {
     @content;
   }
 }
+
 @mixin desktop_4k {
   @media (min-width: #{$breakpoint-3xl + 1px}) {
     @content;
+  }
+}
+
+
+@mixin tlc-glow-btn($bg-color: #E51937, $text-color: #ffffff) {
+  padding: 16px 40px !important;
+  border-radius: 1000px !important;
+  background-color: $bg-color !important;
+  // Automatically generates a 50% opacity shadow based on the provided $bg-color
+  box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.25) inset, 0 12px 32px 1px rgba($bg-color, 0.5) !important;
+  color: $text-color !important;
+  font-family: $font-family-aktiv !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  line-height: 150% !important;
+  letter-spacing: -0.88px !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+
+  &:hover,
+  &:focus {
+    transform: translateY(-3px);
+    animation: tlc-btn-glow-pulse 1.6s ease-in-out infinite;
+  }
+
+
+  @include desktop {
+    font-size: 22px !important;
+  }
+
+
+  @media (max-width: 360px) {
+    font-size: 14px !important;
+  }
+}
+
+
+@mixin tlc-column-hover-effect($overlay-color: #000000, $overlay-opacity: 0.4) {
+  &:hover,
+  &:focus {
+    .column-image-bg {
+      transform: scale(1.05);
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba($overlay-color, $overlay-opacity);
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+
+@mixin content-overlay($position: 'bottom') {
+  // Base structural properties for the overlay
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+
+  // The base solid transparent layer (#00000066 / rgba 0.4)
+  $solid-layer: rgba(0, 0, 0, 0.4);
+
+  // Apply gradient based on the passed position parameter
+  @if $position == 'top' {
+    // Dark at the top, fades to transparent towards the bottom
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 60%),
+    $solid-layer;
+
+  } @else if $position == 'middle' {
+    // Transparent at top/bottom, dark in the middle
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 0) 85%),
+    $solid-layer;
+
+  } @else if $position == 'bottom' {
+    // Transparent at the top, dark at the bottom (using your original values)
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 28.86%, rgba(0, 0, 0, 0.75) 67.68%),
+    $solid-layer;
+
+  } @else {
+    // Fallback if no valid parameter is passed (just the solid color)
+    background: $solid-layer;
   }
 }

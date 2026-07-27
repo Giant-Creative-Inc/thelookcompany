@@ -1,6 +1,13 @@
 body.material .ocm-effect-wrap .container-wrap {
   overflow: hidden;
 }
+
+// Salient sticky scroll-pinned sections require overflow:visible on ancestors (desktop).
+@media only screen and (min-width: 1000px) {
+  body.material .ocm-effect-wrap .container-wrap {
+    overflow: visible;
+  }
+}
 body[data-header-resize="0"] .container-wrap, body[data-header-resize="0"] .project-title {
   padding-top: 0 !important;
 }
