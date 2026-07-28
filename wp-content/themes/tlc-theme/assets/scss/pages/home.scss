@@ -16,6 +16,7 @@
         }
       }
     }
+
     .skbc-carousel__slides {
       height: 100vh;
       max-height: 520px;
@@ -26,6 +27,7 @@
         min-height: 720px;
         max-height: 1080px;
       }
+
       .skbc-slide {
         .skbc-slide__content {
           &-inner {
@@ -33,17 +35,18 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 24px;
+
             h2,
             h1 {
               font-family: 'clarendon-text-pro', serif;
               font-weight: 600;
               line-height: 1.17;
-              font-size:40px;
+              font-size: 36px;
               margin-bottom: 0;
               letter-spacing: 1.8px !important;
               max-width: 820px;
               @include tablet {
-                font-size:62px;
+                font-size: 62px;
               }
               @include desktop {
                 position: relative;
@@ -61,13 +64,14 @@
                 }
               }
               @include sm_desktop {
-                font-size:66px;
+                font-size: 72px;
               }
               @include lg_desktop {
                 letter-spacing: 3.54px;
-                font-size: 88px;
+                font-size: 72px;
               }
             }
+
             .skbc-slide__text {
               font-size: 16px;
               line-height: 1.59;
@@ -82,6 +86,7 @@
                 font-size: 30px;
               }
             }
+
             a.skbc-slide__btn {
               padding: 12px 54px;
               border-radius: 100px !important;
@@ -91,6 +96,7 @@
               color: $white;
               font-size: 18px;
               transition: all .3s;
+
               &:hover {
                 background-color: transparent;
                 color: $primary-color;
@@ -101,6 +107,7 @@
       }
     }
   }
+
   &__retail,
   &__sports,
   &__case-studies,
@@ -108,6 +115,7 @@
     .underlined-title h2 {
       position: relative;
       padding-bottom: 24px !important;
+
       &:after {
         content: '';
         position: absolute;
@@ -119,6 +127,7 @@
       }
     }
   }
+
   &__who-we-are {
     @include desktop {
       padding-bottom: 15px !important;
@@ -126,13 +135,14 @@
         padding-bottom: 30px !important;
       }
     }
+
     > .row-bg-wrap {
-      .inner-wrap { 
+      .inner-wrap {
         @include desktop {
           .row-bg {
             width: 48%;
             top: 15%;
-            left:0;
+            left: 0;
             left: auto;
             border-radius: 0 50px 0 0;
             overflow: hidden;
@@ -141,6 +151,7 @@
       }
     }
   }
+
   &__sports,
   &__retail {
     > .row-bg-wrap {
@@ -162,6 +173,7 @@
         }
       }
     }
+
     @include touch_screen {
       > .row-bg-wrap {
         .inner-wrap {
@@ -194,6 +206,7 @@
       }
     }
   }
+
   &__sports {
     > .row-bg-wrap {
       .inner-wrap {
@@ -203,6 +216,7 @@
         }
       }
     }
+
     @include desktop {
       .dark-bg {
         &:before {
@@ -212,6 +226,7 @@
       }
     }
   }
+
   &__case-studies {
     > .row-bg-wrap {
       .inner-wrap {
@@ -233,6 +248,7 @@
       }
     }
   }
+
   &__case-studies,
   &__contact-us {
     > .row-bg-wrap {
@@ -244,10 +260,12 @@
         }
       }
     }
+
     .row_col_wrap_12 {
       .flickity-page-dots {
         bottom: -50px !important;
       }
+
       @include touch_screen {
         .pin-right {
           margin-left: auto !important;
@@ -267,6 +285,7 @@
       }
     }
   }
+
   &__products {
     > .row_col_wrap_12 {
       > .col {
@@ -279,6 +298,7 @@
               inset: 0;
               z-index: 1;
             }
+
             .inner-wrap {
               z-index: -1;
               transition-property: all;
@@ -286,7 +306,8 @@
               transition-duration: .15s;
               transition-duration: .7s;
             }
-            &:after{
+
+            &:after {
               content: '';
               position: absolute;
               inset: 0;
@@ -301,49 +322,55 @@
           }
         }
       }
+
       > .col:nth-child(2) {
         > .vc_column-inner {
           > .column-bg-layer {
-            &:after{
-              background: linear-gradient(180deg,rgba(242,184,68,0) 9.19%, $brand-yellow);
+            &:after {
+              background: linear-gradient(180deg, rgba(242, 184, 68, 0) 9.19%, $brand-yellow);
             }
           }
         }
       }
+
       > .col:nth-child(3) {
         > .vc_column-inner {
           > .column-bg-layer {
-            &:after{
-              background: linear-gradient(180deg,rgba(83,168,168,0) 9.19%, $brand-teal);
+            &:after {
+              background: linear-gradient(180deg, rgba(83, 168, 168, 0) 9.19%, $brand-teal);
             }
           }
         }
       }
+
       > .col:nth-child(4) {
         > .vc_column-inner {
           > .column-bg-layer {
-            &:after{
+            &:after {
               background: linear-gradient(180deg, rgba(216, 43, 54, 0) 9.19%, $brand-blue);
             }
           }
         }
       }
+
       > .col:nth-child(5) {
         > .vc_column-inner {
           > .column-bg-layer {
-            &:after{
+            &:after {
               background: linear-gradient(180deg, rgba(216, 43, 54, 0) 9.19%, $brand-navy);
             }
           }
         }
       }
+
       > .col:hover {
         > .vc_column-inner {
           > .column-bg-layer {
             .inner-wrap {
               transform: scale(1.25);
             }
-            &:after{
+
+            &:after {
               opacity: 1;
             }
           }
@@ -351,10 +378,12 @@
       }
     }
   }
+
   &__contact-us {
     .underlined-title h2 {
       position: relative;
       padding-bottom: 24px !important;
+
       &:after {
         content: '';
         position: absolute;
