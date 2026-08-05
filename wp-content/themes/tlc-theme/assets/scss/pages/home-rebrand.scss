@@ -24,16 +24,13 @@
   display: inline-block;
 }
 
-
 @keyframes tlc-btn-glow-pulse {
   0%,
   100% {
-    box-shadow: 0 8px 8px 0 rgba(255, 255, 255, 0.25) inset,
-    0 12px 32px 1px rgba(229, 25, 55, 0.5);
+    box-shadow: 0 8px 8px 0 rgba(255, 255, 255, 0.25) inset, 0 12px 32px 1px rgba(229, 25, 55, 0.5);
   }
   50% {
-    box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.45) inset,
-    0 12px 64px 1px rgba(229, 25, 55, 0.5);
+    box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.45) inset, 0 12px 64px 1px rgba(229, 25, 55, 0.5);
   }
 }
 
@@ -41,6 +38,25 @@ body {
   font-feature-settings: "liga" off,
   "clig" off;
   font-family: $font-family-aktiv !important;
+}
+
+.nectar-sticky-media-sections {
+  .nectar-sticky-media-section__content-section:nth-child(3) .nectar-sticky-media-section__media {
+    background-position: bottom center;
+  }
+}
+
+.nectar_fullscreen_zoom_recent_projects .project-slide.current .bg-outer-wrap .bg-inner-wrap {
+  position: relative;
+
+  &::after {
+    opacity: 1;
+    @include content-overlay('middle');
+  }
+}
+
+body .nectar_fullscreen_zoom_recent_projects[data-overlay-opacity="0.6"] .project-slide.current .bg-outer-wrap .bg-inner-wrap:after {
+  opacity: 1;
 }
 
 .home {
@@ -85,7 +101,7 @@ body {
       color: #ffffff;
       font-feature-settings: 'liga' off, 'clig' off;
 
-      font-family: $font-family-aktiv;
+      font-family: $font-family-clarendon;
       font-size: 32px !important;
       font-style: normal;
       font-weight: 600;
@@ -147,17 +163,18 @@ body {
       overflow: visible !important;
 
       .project-slide__title {
-        font-family: $font-family-aktiv;
+        font-family: $font-family-clarendon !important;
         font-size: 48px !important;
         font-style: normal;
         font-weight: 700;
         line-height: 1 !important;
-        letter-spacing: -3.2px !important;
+        //letter-spacing: -3.2px !important;
         max-width: 100% !important;
 
         @include desktop {
           font-size: 64px !important;
-          max-width: 75% !important;
+          max-width: 750px !important;
+          letter-spacing: 3.54px !important;
         }
       }
 
@@ -346,7 +363,7 @@ body {
       h2 {
         color: #ffffff;
         font-size: 32px;
-        font-family: $font-family-aktiv;
+        font-family: $font-family-clarendon;
 
         font-style: normal;
         font-weight: 700;
@@ -525,9 +542,6 @@ body {
 
       &.sports-solution-block {
       }
-
-      &.interior-solution-block {
-      }
     }
   }
 
@@ -539,6 +553,18 @@ body {
           overflow: hidden !important;
           z-index: 0;
           border-radius: 12px;
+
+          .bg-overlay {
+            background: unset !important;
+            opacity: 1 !important;
+
+            &::before {
+              @include content-overlay('bottom');
+            }
+          }
+
+          @include tlc-column-hover-effect();
+
 
           .item-main {
             display: flex;
