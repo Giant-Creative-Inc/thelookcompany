@@ -88,11 +88,13 @@ if ( ! function_exists( 'salient_globe_locations_render' ) ) {
 			$img_role      = $is_decorative ? ' role="presentation"' : '';
 
 			$map_markup  = '<div class="sgl-map">';
+			$map_markup .= '<div class="sgl-map__stage">';
 			$map_markup .= '<figure class="sgl-map__figure"' . $figure_attrs . '>';
 			$map_markup .= '<img class="sgl-map__image" src="' . esc_url( $map_url ) . '" alt="' . esc_attr( $img_alt ) . '"' . $img_role . ' />';
 			$map_markup .= '</figure>';
 			$map_markup .= '<div class="sgl-map__pins" role="group" aria-label="' . esc_attr__( 'Location markers on map', 'salient-globe-locations' ) . '">';
 			$map_markup .= $pins_markup;
+			$map_markup .= '</div>';
 			$map_markup .= '</div>';
 			$map_markup .= '</div>';
 		}

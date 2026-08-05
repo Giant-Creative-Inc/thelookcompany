@@ -23,24 +23,30 @@
 
 /* Map */
 .sgl-map {
-	position: relative;
+	display: flex;
+	justify-content: center;
 	width: 100%;
-	max-height: 70vh;
 	margin: 0 auto;
+}
+
+.sgl-map__stage {
+	position: relative;
+	width: max-content;
+	max-width: 100%;
 }
 
 .sgl-map__figure {
 	margin: 0;
 	width: 100%;
-	height: 100%;
+	line-height: 0;
 }
 
-.sgl-map__image {
+.sgl-globe-locations .sgl-map__image {
 	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
-	object-position: center top;
+	max-width: 100%;
+	max-height: 70vh;
+	width: auto;
+	height: auto;
 }
 
 .sgl-map__pins {
