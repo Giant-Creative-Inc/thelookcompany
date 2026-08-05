@@ -137,7 +137,10 @@ if ( ! function_exists( 'salient_portfolio_slider_render' ) ) {
 			}
 
 			$logo_markup = salient_portfolio_slider_render_logo_scroll(
-				salient_portfolio_slider_parse_slide_logos( $slide )
+				salient_portfolio_slider_parse_slide_logos( $slide ),
+				array(
+					'scroll_duration' => isset( $slide['logo_scroll_duration'] ) ? $slide['logo_scroll_duration'] : '20',
+				)
 			);
 
 			$markup .= $text_markup;
@@ -166,7 +169,11 @@ if ( ! function_exists( 'salient_portfolio_slider_render' ) ) {
 			}
 
 			if ( ! empty( $autorotate_attr ) ) {
-				$controls_markup .= '<button type="button" class="sps-carousel-pause" aria-pressed="false" aria-label="' . esc_attr__( 'Pause slideshow', 'salient-portfolio-slider' ) . '"><span class="screen-reader-text">' . esc_html__( 'Pause slideshow', 'salient-portfolio-slider' ) . '</span></button>';
+				$controls_markup .= '<button type="button" class="sps-carousel-pause" aria-pressed="false" aria-label="' . esc_attr__( 'Pause slideshow', 'salient-portfolio-slider' ) . '">';
+				$controls_markup .= '<i class="fa fa-pause sps-pause-icon" aria-hidden="true"></i>';
+				$controls_markup .= '<i class="fa fa-play sps-play-icon" aria-hidden="true"></i>';
+				$controls_markup .= '<span class="screen-reader-text">' . esc_html__( 'Pause slideshow', 'salient-portfolio-slider' ) . '</span>';
+				$controls_markup .= '</button>';
 			}
 
 			if ( '' !== $controls_markup ) {

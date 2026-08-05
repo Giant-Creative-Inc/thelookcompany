@@ -14,6 +14,7 @@ function salient_child_enqueue_styles() {
   // Front page gets its own stylesheet (home.min.css).
   if (is_front_page()) {
     wp_enqueue_style('tlc-homepage-style', get_stylesheet_directory_uri() . '/assets/css/home.min.css', [], filemtime(get_stylesheet_directory() . '/assets/css/home.min.css'));
+    wp_enqueue_script('tlc-home-rebrand-js', get_stylesheet_directory_uri() . '/assets/js/home-rebrand.js', ['jquery'], filemtime(get_stylesheet_directory() . '/assets/js/home-rebrand.js'), true);
   }
 
   // Auto-load page-specific CSS based on the page slug.
@@ -28,11 +29,6 @@ function salient_child_enqueue_styles() {
 
     if (in_array($slug, $form_pages, true)) {
       wp_enqueue_script('tlc-form-js');
-    }
-
-    // Home rebrand page: custom JS for market section scroll-to-section.
-    if ('home-rebrand' === $slug) {
-      wp_enqueue_script('tlc-home-rebrand-js', get_stylesheet_directory_uri() . '/assets/js/home-rebrand.js', ['jquery'], filemtime(get_stylesheet_directory() . '/assets/js/home-rebrand.js'), true);
     }
   }
 

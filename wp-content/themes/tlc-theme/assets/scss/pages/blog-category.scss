@@ -9,7 +9,7 @@
     h2.wp-block-heading {
       line-height: 40px !important;
       font-weight: 600 !important;
-      font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: "gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
   }
 }
@@ -64,8 +64,6 @@
   font-size: 25px !important;
 }
 
-.post-area.auto_meta_overlaid_spaced
-  .masonry-blog-item:nth-child(8n + 1)
-  .post-header {
+.post-area.auto_meta_overlaid_spaced .masonry-blog-item:nth-child(8n + 1) .post-header {
   max-width: 80%;
 }

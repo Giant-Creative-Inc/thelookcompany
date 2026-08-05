@@ -198,6 +198,53 @@
 		} );
 	}
 
+	function setPauseUi( $pause, paused ) {
+		var label = paused
+			? getString( 'play', 'Play slideshow' )
+			: getString( 'pause', 'Pause slideshow' );
+
+		$pause.attr( {
+			'aria-pressed': paused ? 'true' : 'false',
+			'aria-label': label,
+		} );
+		$pause.find( '.screen-reader-text' ).text( label );
+	}
+
+	function getFsInstance( $slider, instance ) {
+		return instance || $slider.data( 'spsFsInstance' );
+	}
+
+	function pauseInstance( instance ) {
+		if ( ! instance ) {
+			return;
+		}
+
+		if ( typeof instance._spsOriginalRotationSpeed === 'undefined' ) {
+			instance._spsOriginalRotationSpeed = instance.rotationSpeed;
+		}
+
+		instance.rotationSpeed = 0;
+
+		if ( instance.rotationInterval ) {
+			window.clearInterval( instance.rotationInterval );
+			instance.rotationInterval = null;
+		}
+	}
+
+	function playInstance( instance ) {
+		if ( ! instance ) {
+			return;
+		}
+
+		if ( typeof instance._spsOriginalRotationSpeed !== 'undefined' ) {
+			instance.rotationSpeed = instance._spsOriginalRotationSpeed;
+		}
+
+		if ( typeof instance.sliderResetRotate === 'function' ) {
+			instance.sliderResetRotate();
+		}
+	}
+
 	function setupPause( $slider, instance ) {
 		var $pause = $slider.find( '.sps-carousel-pause' ).first();
 
@@ -205,13 +252,13 @@
 			return;
 		}
 
-		if ( prefersReducedMotion ) {
-			if ( instance && instance.rotationInterval ) {
-				window.clearInterval( instance.rotationInterval );
-				instance.rotationInterval = null;
-			}
-			$pause.hide();
-			return;
+		var fsInstance = getFsInstance( $slider, instance );
+
+		if ( prefersReducedMotion && ! $pause.data( 'spsReducedMotionApplied' ) && fsInstance ) {
+			pauseInstance( fsInstance );
+			setPauseUi( $pause, true );
+			$pause.data( 'spsReducedMotionApplied', true );
+			$slider.data( 'spsFsInstance', fsInstance );
 		}
 
 		if ( $pause.data( 'spsPauseBound' ) ) {
@@ -223,30 +270,20 @@
 		$pause.on( 'click.spsA11y', function ( event ) {
 			event.preventDefault();
 
-			if ( ! instance ) {
+			var liveInstance = $slider.data( 'spsFsInstance' );
+
+			if ( ! liveInstance ) {
 				return;
 			}
 
 			var isPaused = $pause.attr( 'aria-pressed' ) === 'true';
 
 			if ( isPaused ) {
-				$pause.attr( {
-					'aria-pressed': 'false',
-					'aria-label': getString( 'pause', 'Pause slideshow' ),
-				} );
-				$pause.find( '.screen-reader-text' ).text( getString( 'pause', 'Pause slideshow' ) );
-
-				if ( typeof instance.sliderResetRotate === 'function' ) {
-					instance.sliderResetRotate();
-				}
+				playInstance( liveInstance );
+				setPauseUi( $pause, false );
 			} else {
-				window.clearInterval( instance.rotationInterval );
-				instance.rotationInterval = null;
-				$pause.attr( {
-					'aria-pressed': 'true',
-					'aria-label': getString( 'play', 'Play slideshow' ),
-				} );
-				$pause.find( '.screen-reader-text' ).text( getString( 'play', 'Play slideshow' ) );
+				pauseInstance( liveInstance );
+				setPauseUi( $pause, true );
 			}
 		} );
 	}
@@ -269,7 +306,18 @@
 	}
 
 	function enhance( $slider, instance ) {
-		if ( ! $slider || ! $slider.length || $slider.data( 'sps-a11y-enhanced' ) ) {
+		if ( ! $slider || ! $slider.length ) {
+			return;
+		}
+
+		if ( instance ) {
+			$slider.data( 'spsFsInstance', instance );
+		}
+
+		if ( $slider.data( 'sps-a11y-enhanced' ) ) {
+			if ( prefersReducedMotion ) {
+				setupPause( $slider, $slider.data( 'spsFsInstance' ) );
+			}
 			return;
 		}
 
@@ -279,15 +327,11 @@
 
 		$slider.data( 'sps-a11y-enhanced', true );
 
-		if ( instance ) {
-			$slider.data( 'spsFsInstance', instance );
-		}
-
 		syncAriaHidden( $slider );
 		enhanceDots( $slider );
 		bindSlideChangeHandlers( $slider );
 		setupRegionKeyboard( $slider );
-		setupPause( $slider, instance || $slider.data( 'spsFsInstance' ) );
+		setupPause( $slider, $slider.data( 'spsFsInstance' ) );
 		announceSlide( $slider );
 	}
 

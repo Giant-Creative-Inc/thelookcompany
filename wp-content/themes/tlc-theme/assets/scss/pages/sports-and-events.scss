@@ -146,43 +146,7 @@
   &__wayfinding,
   &__city-dressing,
   &__services {
-    > .row-bg-wrap {
-      .inner-wrap {
-        &:before {
-          content: '';
-          position: absolute;
-          left: 0%;
-          bottom: 0;
-          max-width: 1312px;
-          background-color: $primary-color !important;
-          width: 100vw;
-          height: 7px;
-          z-index: 2;
-          @include desktop {
-            height: 15px;
-            width: 68vw;
-          }
-        }
-      }
-    }
-    &:nth-child(odd) {
-      > .row-bg-wrap {
-        .inner-wrap {
-          &:before {
-            right: 0;
-            left: auto;
-          }
-        }
-      }
-      @include desktop {
-        .dark-bg {
-          &:before {
-            right: auto;
-            left: 0;
-          }
-        }
-      }
-    }
+    @include zigzag-section;
     .flex_gap_desktop_32px {
       .vc_column-inner {
         .wpb_wrapper {
@@ -200,13 +164,6 @@
       }
     }
     &.teal {
-      > .row-bg-wrap {
-        .inner-wrap {
-          &:before {
-            background-color: $brand-teal !important;
-          }
-        }
-      }
       .nectar-cta.has-icon  {
         .link_wrap {
           i {
@@ -216,13 +173,6 @@
       }
     }
     &.yellow {
-      > .row-bg-wrap {
-        .inner-wrap {
-          &:before {
-            background-color: $brand-yellow !important;
-          }
-        }
-      }
       .nectar-cta.has-icon  {
         .link_wrap {
           i {
@@ -232,13 +182,6 @@
       }
     }
     &.blue {
-      > .row-bg-wrap {
-        .inner-wrap {
-          &:before {
-            background-color: $brand-blue !important;
-          }
-        }
-      }
       .nectar-cta.has-icon  {
         .link_wrap {
           i {
@@ -248,13 +191,6 @@
       }
     }
     &.navy {
-      > .row-bg-wrap {
-        .inner-wrap {
-          &:before {
-            background-color: $brand-navy !important;
-          }
-        }
-      }
       .nectar-cta.has-icon  {
         .link_wrap {
           i {
@@ -263,37 +199,11 @@
         }
       }
     }
-    @include touch_screen {
-      > .row-bg-wrap {
-        .inner-wrap {
-          &:after {
-            content: '';
-            position: absolute;
-            left: 0%;
-            bottom: 0;
-            z-index: 1;
-            background: rgba(22, 26, 30, .85);
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-          }
-        }
-      }
-    }
-    @include desktop {
-      .dark-bg {
-        &:before {
-          content: "";
-          position: absolute;
-          width: 100vw;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          background: rgba(22, 26, 30, .85);
-          border-radius: 50px;
-        }
-      }
-    }
+  }
+  &__interior-branding,
+  &__kit-of-parts,
+  &__city-dressing {
+    @include zigzag-section(right);
   }
   &__contact-us,
   &__case-studies {

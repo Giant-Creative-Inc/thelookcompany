@@ -125,73 +125,8 @@
   &__design-and-planning,
   &__project-management,
   &__post-completion {
-    > .row-bg-wrap {
-      .inner-wrap {
-        &:before {
-          content: '';
-          position: absolute;
-          left: 0%;
-          bottom: 0;
-          max-width: 1312px;
-          background-color: $brand-navy !important;
-          width: 100vw;
-          height: 7px;
-          z-index: 2;
-          @include desktop {
-            height: 15px;
-            width: 68vw;
-          }
-        }
-      }
-    }
-    &:nth-child(odd) {
-      > .row-bg-wrap {
-        .inner-wrap {
-          &:before {
-            right: 0;
-            left: auto;
-          }
-        }
-      }
-      @include desktop {
-        .dark-bg {
-          &:before {
-            right: auto;
-            left: 0;
-          }
-        }
-      }
-    }
-    @include touch_screen {
-      > .row-bg-wrap {
-        .inner-wrap {
-          &:after {
-            content: '';
-            position: absolute;
-            left: 0%;
-            bottom: 0;
-            z-index: 1;
-            background: rgba(22, 26, 30, .85);
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-          }
-        }
-      }
-    }
+    @include zigzag-section($accent: $brand-navy);
     @include desktop {
-      .dark-bg {
-        &:before {
-          content: "";
-          position: absolute;
-          width: 100vw;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          background: rgba(22, 26, 30, .85);
-          border-radius: 50px;
-        }
-      }
       .row_col_wrap_12_inner {
         .flex_layout_desktop_row {
           > .vc_column-inner {
@@ -207,6 +142,11 @@
         }
       }
     }
+  }
+  // Content column is on the right in WPBakery for these rows — match overlay/accent to that side
+  &__concept-development,
+  &__project-management {
+    @include zigzag-section(right);
   }
   &__contact-us,
   &__case-studies {

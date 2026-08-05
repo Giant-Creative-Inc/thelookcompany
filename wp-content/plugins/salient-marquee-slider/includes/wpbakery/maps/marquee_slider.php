@@ -50,6 +50,13 @@ return array(
 		),
 		array(
 			'type'        => 'textfield',
+			'heading'     => esc_html__( 'Scroll Duration (seconds)', 'salient-marquee-slider' ),
+			'param_name'  => 'scroll_duration',
+			'value'       => '20',
+			'description' => esc_html__( 'Time for one full loop. Higher = slower. Longer logo lists usually need a higher value (e.g. 40–60) to match shorter ones.', 'salient-marquee-slider' ),
+		),
+		array(
+			'type'        => 'textfield',
 			'heading'     => esc_html__( 'Max Width', 'salient-marquee-slider' ),
 			'param_name'  => 'max_width',
 			'value'       => '',

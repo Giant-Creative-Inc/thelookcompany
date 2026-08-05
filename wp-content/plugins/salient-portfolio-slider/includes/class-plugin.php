@@ -313,13 +313,70 @@ class Salient_Portfolio_Slider {
 
 	/**
 	 * Fallback slider init when theme init runs before portfolio JS.
+	 *
+	 * Also wraps SalientRecentProjectsFullScreen so plugin fallback + theme
+	 * init share one instance (avoids a second autorotate interval).
 	 */
 	public function add_slider_fallback_init() {
 		if ( $this->fallback_init_added || ! wp_script_is( 'salient-portfolio-js', 'enqueued' ) ) {
 			return;
 		}
 
-		$inline_script = "jQuery(function($){if(typeof SalientRecentProjectsFullScreen==='undefined'){return;}\$('.nectar_fullscreen_zoom_recent_projects').each(function(){var \$el=\$(this);if(\$el.data('sps-initialized')){return;}\$el.data('sps-initialized',true);var instance=new SalientRecentProjectsFullScreen(\$el);\$el.data('spsFsInstance',instance);if(window.SalientPortfolioSliderA11y){window.SalientPortfolioSliderA11y.enhance(\$el,instance);}});setTimeout(function(){\$('.nectar_fullscreen_zoom_recent_projects').each(function(){var \$el=\$(this);var instance=\$el.data('spsFsInstance');if(instance&&typeof instance.sliderCalcs==='function'){instance.sliderCalcs();}if(window.SalientPortfolioSliderA11y){window.SalientPortfolioSliderA11y.enhance(\$el,instance);}});},300);});";
+		// Singleton wrap first, then ready-time fallback init (shared spsFsInstance).
+		$inline_script = <<<'JS'
+(function($){
+	var Original = window.SalientRecentProjectsFullScreen;
+	if (!Original || Original._spsSingleton) {
+		return;
+	}
+	function SalientRecentProjectsFullScreen(el) {
+		var $el = el && el.jquery ? el : $(el);
+		var existing = $el.data('spsFsInstance');
+		if (existing) {
+			return existing;
+		}
+		Original.call(this, $el);
+		$el.data('spsFsInstance', this);
+	}
+	SalientRecentProjectsFullScreen.prototype = Original.prototype;
+	SalientRecentProjectsFullScreen._spsSingleton = true;
+	window.SalientRecentProjectsFullScreen = SalientRecentProjectsFullScreen;
+})(jQuery);
+
+jQuery(function($){
+	function enhance($el, instance) {
+		if (window.SalientPortfolioSliderA11y) {
+			window.SalientPortfolioSliderA11y.enhance($el, instance);
+		}
+	}
+
+	if (typeof SalientRecentProjectsFullScreen === 'undefined') {
+		return;
+	}
+
+	$('.nectar_fullscreen_zoom_recent_projects').each(function(){
+		var $el = $(this);
+		if ($el.data('sps-initialized')) {
+			return;
+		}
+		$el.data('sps-initialized', true);
+		var instance = new SalientRecentProjectsFullScreen($el);
+		$el.data('spsFsInstance', instance);
+		enhance($el, instance);
+	});
+
+	setTimeout(function(){
+		$('.nectar_fullscreen_zoom_recent_projects').each(function(){
+			var $el = $(this);
+			var instance = $el.data('spsFsInstance');
+			if (instance && typeof instance.sliderCalcs === 'function') {
+				instance.sliderCalcs();
+			}
+			enhance($el, instance);
+		});
+	}, 300);
+});
+JS;
 
 		wp_add_inline_script( 'salient-portfolio-js', $inline_script );
 		$this->fallback_init_added = true;

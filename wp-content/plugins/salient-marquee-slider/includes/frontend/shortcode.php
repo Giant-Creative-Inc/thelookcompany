@@ -21,10 +21,11 @@ if ( ! function_exists( 'salient_marquee_slider_render' ) ) {
 	function salient_marquee_slider_render( $atts, $content = null ) {
 		$atts = shortcode_atts(
 			array(
-				'logos'      => '',
-				'max_width'  => '',
-				'align'      => 'left',
-				'aria_label' => '',
+				'logos'           => '',
+				'scroll_duration' => '20',
+				'max_width'       => '',
+				'align'           => 'left',
+				'aria_label'      => '',
 			),
 			$atts,
 			'salient_marquee_slider'
@@ -37,9 +38,10 @@ if ( ! function_exists( 'salient_marquee_slider_render' ) ) {
 		return salient_marquee_slider_render_marquee(
 			$logos,
 			array(
-				'aria_label' => $atts['aria_label'],
-				'max_width'  => $atts['max_width'],
-				'align'      => $atts['align'],
+				'aria_label'      => $atts['aria_label'],
+				'scroll_duration' => $atts['scroll_duration'],
+				'max_width'       => $atts['max_width'],
+				'align'           => $atts['align'],
 			)
 		);
 	}

@@ -247,17 +247,55 @@ if ( ! function_exists( 'salient_portfolio_slider_render_logo_item' ) ) {
 	}
 }
 
+if ( ! function_exists( 'salient_portfolio_slider_sanitize_scroll_duration' ) ) {
+	/**
+	 * Sanitize logo scroll duration in seconds.
+	 *
+	 * @param mixed $duration Raw duration input.
+	 * @return float Duration between 5 and 120, default 20.
+	 */
+	function salient_portfolio_slider_sanitize_scroll_duration( $duration ) {
+		if ( ! is_numeric( $duration ) ) {
+			return 20.0;
+		}
+
+		$duration = (float) $duration;
+
+		if ( $duration <= 0 ) {
+			return 20.0;
+		}
+
+		if ( $duration < 5 ) {
+			return 5.0;
+		}
+
+		if ( $duration > 120 ) {
+			return 120.0;
+		}
+
+		return $duration;
+	}
+}
+
 if ( ! function_exists( 'salient_portfolio_slider_render_logo_scroll' ) ) {
 	/**
 	 * Render the infinite CSS scroll logo strip.
 	 *
 	 * @param array $logos Parsed logo rows.
+	 * @param array $args  Optional scroll_duration key.
 	 * @return string
 	 */
-	function salient_portfolio_slider_render_logo_scroll( $logos ) {
+	function salient_portfolio_slider_render_logo_scroll( $logos, $args = array() ) {
 		if ( empty( $logos ) ) {
 			return '';
 		}
+
+		$args = wp_parse_args(
+			$args,
+			array(
+				'scroll_duration' => '20',
+			)
+		);
 
 		$items = '';
 
@@ -273,7 +311,10 @@ if ( ! function_exists( 'salient_portfolio_slider_render_logo_scroll' ) ) {
 			return '';
 		}
 
-		$markup  = '<div class="sps-logo-scroll scroll-container" aria-label="' . esc_attr__( 'Partner logos', 'salient-portfolio-slider' ) . '">';
+		$scroll_duration = salient_portfolio_slider_sanitize_scroll_duration( $args['scroll_duration'] );
+		$style_attr      = ' style="' . esc_attr( '--sps-scroll-duration:' . $scroll_duration . 's' ) . ';"';
+
+		$markup  = '<div class="sps-logo-scroll scroll-container"' . $style_attr . ' aria-label="' . esc_attr__( 'Partner logos', 'salient-portfolio-slider' ) . '">';
 		$markup .= '<div class="scroll-track">';
 		$markup .= '<div class="scroll-group">' . $items . '</div>';
 		$markup .= '<div class="scroll-group" aria-hidden="true">' . $items . '</div>';
