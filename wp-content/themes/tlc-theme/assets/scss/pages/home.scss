@@ -404,7 +404,11 @@ body .nectar_fullscreen_zoom_recent_projects[data-overlay-opacity="0.6"] .projec
           overflow: hidden !important;
 
           &::before {
-            @include content-overlay('middle');
+            @include content-overlay('bottom');
+
+            @include desktop {
+              @include content-overlay('middle');
+            }
           }
         }
       }
