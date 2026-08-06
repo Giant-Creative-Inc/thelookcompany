@@ -580,6 +580,15 @@ body .nectar_fullscreen_zoom_recent_projects[data-overlay-opacity="0.6"] .projec
           z-index: 0;
           border-radius: 12px;
 
+          // Height Fix:
+          max-height: 429px !important;
+          min-height: unset !important;
+          height: 50vh !important;
+
+          @include desktop {
+            max-height: 532px !important;
+          }
+
           .bg-overlay {
             background: unset !important;
             opacity: 1 !important;
