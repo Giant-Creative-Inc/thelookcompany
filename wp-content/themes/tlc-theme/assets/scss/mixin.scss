@@ -119,7 +119,13 @@ $breakpoint-3xl: 1920px;
     .column-image-bg,
     .bg-overlay {
       transform: scale(1.05);
+    }
+  }
 
+
+  &:hover {
+    .column-image-bg,
+    .bg-overlay {
       &::after {
         content: "";
         position: absolute;
