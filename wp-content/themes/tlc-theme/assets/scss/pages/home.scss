@@ -499,6 +499,7 @@ body .nectar_fullscreen_zoom_recent_projects[data-overlay-opacity="0.6"] .projec
           font-weight: 400;
           line-height: 150%; /* 30px */
           letter-spacing: -0.8px;
+          margin-bottom: 40px;
 
           @include desktop {
             font-size: 20px !important;
@@ -522,7 +523,6 @@ body .nectar_fullscreen_zoom_recent_projects[data-overlay-opacity="0.6"] .projec
         /* Change to single column on mobile */
         @media (max-width: 768px) {
           grid-template-columns: 1fr;
-          gap: 20px; /* Optional: Adds vertical spacing between stacked elements */
         }
 
         @include desktop {
