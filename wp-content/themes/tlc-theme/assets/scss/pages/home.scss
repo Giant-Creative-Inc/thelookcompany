@@ -706,13 +706,7 @@ body .nectar_fullscreen_zoom_recent_projects[data-overlay-opacity="0.6"] .projec
         }
       }
 
-      @include mobile {
-        @include tlc-column-hover-effect($overlay-opacity: 0);
-      }
-
-      @include desktop {
-        @include tlc-column-hover-effect();
-      }
+      @include tlc-column-hover-effect($overlay-opacity: 0);
 
       .column-image-bg-wrap > .inner-wrap {
         &::before {
