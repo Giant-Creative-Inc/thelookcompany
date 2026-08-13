@@ -122,19 +122,19 @@ $breakpoint-3xl: 1920px;
     }
   }
 
-  &:hover {
-    .column-image-bg,
-    .bg-overlay {
-      &::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-color: rgba($overlay-color, $overlay-opacity);
-        z-index: 1;
-        pointer-events: none;
-      }
-    }
-  }
+  //&:hover {
+  //  .column-image-bg,
+  //  .bg-overlay {
+  //    &::after {
+  //      content: "";
+  //      position: absolute;
+  //      inset: 0;
+  //      background-color: rgba($overlay-color, $overlay-opacity);
+  //      z-index: 1;
+  //      pointer-events: none;
+  //    }
+  //  }
+  //}
 }
 
 
