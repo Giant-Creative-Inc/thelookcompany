@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Salient - Video Library (WPBakery Element)
  * Description: Filterable, category-grouped video library for "video" CPT with Nectar video lightbox, cached AJAX, dependent filters, schema, and LCP tuning.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Giant Creative Inc
  *
  * CPT:
@@ -88,14 +88,14 @@ final class Salient_Video_Library {
 			self::STYLE_HANDLE,
 			$url . 'assets/video-library.css',
 			array(),
-			'1.0.2'
+			'1.0.3'
 		);
 
 		wp_register_script(
 			self::SCRIPT_HANDLE,
 			$url . 'assets/video-library.js',
 			array( 'jquery' ),
-			'1.0.2',
+			'1.0.3',
 			true
 		);
 	}
@@ -111,12 +111,32 @@ final class Salient_Video_Library {
 			return;
 		}
 
+		$category_options = array();
+		$category_terms = get_terms( array(
+			'taxonomy'   => 'video-category',
+			'hide_empty' => false,
+			'orderby'    => 'name',
+			'order'      => 'ASC',
+		) );
+		if ( ! is_wp_error( $category_terms ) ) {
+			foreach ( $category_terms as $term ) {
+				$category_options[] = array( (string) $term->term_id, $term->name );
+			}
+		}
+
 		vc_map( array(
 			'name'        => 'Video Library (Grouped)',
 			'base'        => self::SHORTCODE,
 			'category'    => 'Content',
 			'description' => 'Grouped video library for the "video" CPT with filters + Nectar lightbox.',
 			'params'      => array(
+				array(
+					'type'        => 'sorted_list',
+					'heading'     => 'Category order',
+					'param_name'  => 'category_order',
+					'options'     => $category_options,
+					'description' => 'Select categories and drag them into order. Unselected categories follow alphabetically. Leave empty for alphabetical order. This does not hide categories.',
+				),
 				array(
 					'type'        => 'textfield',
 					'heading'     => 'Max categories (optional)',
@@ -308,6 +328,7 @@ final class Salient_Video_Library {
 		$atts = shortcode_atts(
 			array(
 				'max_categories' => '',
+				'category_order' => '',
 				'per_category'   => '3',
 				'eager_first'    => '3',
 				'preload_first'  => '1',
@@ -316,6 +337,7 @@ final class Salient_Video_Library {
 			self::SHORTCODE
 		);
 
+		$category_order = self::normalize_category_order( $atts['category_order'] );
 		$max_categories = self::sanitize_int_or_empty( $atts['max_categories'] );
 		$per_raw        = isset( $atts['per_category'] ) ? (int) $atts['per_category'] : 3;
 		$per_category   = ( -1 === $per_raw ) ? -1 : max( 1, $per_raw );
@@ -359,23 +381,25 @@ final class Salient_Video_Library {
 					'loading'   => 'Loading videos',
 					'noResults' => 'No videos found for those filters.',
 				),
-				'config'  => array(
-					'perCategory'      => $per_category,
-					'maxCategories'    => $max_categories,
-					'eagerFirst'       => $eager_first,
-					'preloadFirst'     => $preload_first,
-					'lockedCategoryId' => $locked_category_id,
-				),
 			)
 		);
 
 		$terms    = self::get_filter_terms_cached( $filters );
-		$grouped  = self::get_grouped_videos_cached( $filters, $per_category, $max_categories );
+		$grouped  = self::get_grouped_videos_cached( $filters, $per_category, $max_categories, $category_order );
 		$preloads = self::render_preload_links( $grouped, $preload_first );
+
+		$config = array(
+			'perCategory'      => $per_category,
+			'maxCategories'    => $max_categories,
+			'eagerFirst'       => $eager_first,
+			'preloadFirst'     => $preload_first,
+			'lockedCategoryId' => $locked_category_id,
+			'categoryOrder'    => implode( ',', $category_order ),
+		);
 
 		ob_start();
 		?>
-		<div class="svl" data-svl>
+		<div class="svl" data-svl data-svl-config="<?php echo esc_attr( wp_json_encode( $config ) ); ?>">
 			<?php echo $preloads; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped HTML. ?>
 
 			<div class="svl__filters" aria-label="Video filters">
@@ -473,8 +497,10 @@ final class Salient_Video_Library {
 
 		$eager_first = isset( $_POST['eagerFirst'] ) ? max( 0, absint( $_POST['eagerFirst'] ) ) : 3;
 
+		$category_order = self::normalize_category_order( isset( $_POST['categoryOrder'] ) ? wp_unslash( $_POST['categoryOrder'] ) : '' );
+
 		$terms   = self::get_filter_terms_cached( $filters );
-		$grouped = self::get_grouped_videos_cached( $filters, $per_category, $max_categories );
+		$grouped = self::get_grouped_videos_cached( $filters, $per_category, $max_categories, $category_order );
 
 		wp_send_json_success( array(
 			'terms'           => array(
@@ -494,20 +520,40 @@ final class Salient_Video_Library {
 	 * ========================================================= */
 
 	/**
+	 * Normalize the native sorted_list comma-separated term IDs without coercing invalid values.
+	 * Deleted or unrelated IDs are ignored when intersecting eligible categories.
+	 */
+	private static function normalize_category_order( $value ) {
+		if ( ! is_string( $value ) ) {
+			return array();
+		}
+		$ids = array();
+		foreach ( explode( ',', $value ) as $part ) {
+			$part = trim( $part );
+			if ( preg_match( '/^[0-9]+$/D', $part ) && (int) $part > 0 ) {
+				$ids[] = (int) $part;
+			}
+		}
+		return array_values( array_unique( $ids ) );
+	}
+
+	/**
 	 * Get grouped video data with transient caching.
 	 *
 	 * @since 1.0.0
 	 * @param array      $filters        Active filter term IDs.
 	 * @param int        $per_category   Videos per section (-1 for all).
 	 * @param string|int $max_categories Maximum sections to show ('' for all).
+	 * @param array      $category_order Preferred category term IDs in display order.
 	 * @return array
 	 */
-	private static function get_grouped_videos_cached( $filters, $per_category, $max_categories ) {
+	private static function get_grouped_videos_cached( $filters, $per_category, $max_categories, $category_order = array() ) {
 		$key = self::CACHE_PREFIX . 'grouped_' . md5( wp_json_encode( array(
 			'ver' => self::get_cache_ver(),
 			'f'   => $filters,
 			'per' => $per_category,
 			'max' => $max_categories,
+			'category_order' => $category_order,
 		) ) );
 
 		$cached = get_transient( $key );
@@ -515,7 +561,7 @@ final class Salient_Video_Library {
 			return $cached;
 		}
 
-		$grouped = self::query_grouped_videos( $filters, $per_category, $max_categories );
+		$grouped = self::query_grouped_videos( $filters, $per_category, $max_categories, $category_order );
 		set_transient( $key, $grouped, self::CACHE_TTL_QUERY );
 
 		return $grouped;
@@ -657,9 +703,10 @@ final class Salient_Video_Library {
 	 * @param array      $filters        Active filter term IDs.
 	 * @param int        $per_category   Videos per section (-1 for all).
 	 * @param string|int $max_categories Maximum sections to show ('' for all).
+	 * @param array      $category_order Preferred category term IDs in display order.
 	 * @return array
 	 */
-	private static function query_grouped_videos( $filters, $per_category, $max_categories ) {
+	private static function query_grouped_videos( $filters, $per_category, $max_categories, $category_order = array() ) {
 		$category_terms = self::get_terms_for_post_type_with_filters( 'video-category', 'video', $filters );
 
 		if ( ! empty( $filters['video-category'] ) ) {
@@ -667,6 +714,20 @@ final class Salient_Video_Library {
 				return (int) $t->term_id === (int) $filters['video-category'];
 			} ) );
 		}
+
+		// Promote only eligible categories; preserve alphabetical order for the rest.
+		$remaining = array();
+		foreach ( $category_terms as $term ) {
+			$remaining[ (int) $term->term_id ] = $term;
+		}
+		$category_terms = array();
+		foreach ( $category_order as $term_id ) {
+			if ( isset( $remaining[ $term_id ] ) ) {
+				$category_terms[] = $remaining[ $term_id ];
+				unset( $remaining[ $term_id ] );
+			}
+		}
+		$category_terms = array_merge( $category_terms, array_values( $remaining ) );
 
 		if ( ! empty( $max_categories ) ) {
 			$category_terms = array_slice( $category_terms, 0, (int) $max_categories );

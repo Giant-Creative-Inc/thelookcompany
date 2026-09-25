@@ -193,6 +193,7 @@ function svlInitCustomSelects( $root ) {
 
 $( '[data-svl]' ).each( function() {
 		var $root         = $( this );
+		var config        = $root.data( 'svl-config' ) || {};
 		var $status       = $root.find( '[data-svl-status]' );
 		var $loader       = $root.find( '[data-svl-loader]' );
 		var $filterLoader = $root.find( '[data-svl-filter-loader]' );
@@ -203,7 +204,7 @@ $( '[data-svl]' ).each( function() {
 		svlInitCustomSelects( $root );
 
 		// If on a video-category archive, PHP passes this non-zero value.
-		var lockedCategoryId = parseInt( SVL && SVL.config && SVL.config.lockedCategoryId || 0, 10 );
+		var lockedCategoryId = parseInt( config.lockedCategoryId || 0, 10 );
 
 		var isLoading     = false;
 		var responseCache = {};
@@ -333,8 +334,8 @@ $( '[data-svl]' ).each( function() {
 		 */
 		function getCacheKey() {
 			var f           = getFilters();
-			var perCategory = lockedCategoryId > 0 ? -1 : ( SVL && SVL.config && SVL.config.perCategory != null ? SVL.config.perCategory : 3 );
-			var maxCats     = lockedCategoryId > 0 ? '1' : ( SVL && SVL.config && SVL.config.maxCategories != null ? SVL.config.maxCategories : '' );
+			var perCategory = lockedCategoryId > 0 ? -1 : ( config.perCategory != null ? config.perCategory : 3 );
+			var maxCats     = lockedCategoryId > 0 ? '1' : ( config.maxCategories != null ? config.maxCategories : '' );
 
 			return JSON.stringify( {
 				m:  f.market,
@@ -343,6 +344,7 @@ $( '[data-svl]' ).each( function() {
 				c:  f.videoCategory,
 				pc: perCategory,
 				mc: maxCats,
+				co: config.categoryOrder || '',
 			} );
 		}
 
@@ -420,8 +422,8 @@ $( '[data-svl]' ).each( function() {
 			var f = getFilters();
 
 			// Force correct values when category is locked (taxonomy archive).
-			var perCategory   = lockedCategoryId > 0 ? -1 : ( SVL && SVL.config && SVL.config.perCategory != null ? SVL.config.perCategory : 3 );
-			var maxCategories = lockedCategoryId > 0 ? '1' : ( SVL && SVL.config && SVL.config.maxCategories != null ? SVL.config.maxCategories : '' );
+			var perCategory   = lockedCategoryId > 0 ? -1 : ( config.perCategory != null ? config.perCategory : 3 );
+			var maxCategories = lockedCategoryId > 0 ? '1' : ( config.maxCategories != null ? config.maxCategories : '' );
 
 			$.ajax( {
 				url:      SVL.ajaxUrl,
@@ -436,7 +438,8 @@ $( '[data-svl]' ).each( function() {
 					videoCategory: f.videoCategory,
 					perCategory:   perCategory,
 					maxCategories: maxCategories,
-					eagerFirst:    SVL && SVL.config && SVL.config.eagerFirst != null ? SVL.config.eagerFirst : 3,
+					categoryOrder: config.categoryOrder || '',
+					eagerFirst:    config.eagerFirst != null ? config.eagerFirst : 3,
 				},
 			} )
 				.done( function( res ) {
